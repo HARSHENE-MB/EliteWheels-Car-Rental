@@ -1,0 +1,122 @@
+/* Custom CSS for EliteWheels Car Rental Website */
+
+:root {
+    /* Color Palette */
+    --primary-color: #3498db;      /* Vibrant Blue */
+    --secondary-color: #2ecc71;    /* Emerald Green */
+    --accent-color: #e74c3c;       /* Bright Red */
+    --background-light: #f4f7f6;   /* Soft Light Gray */
+    --text-dark: #2c3e50;          /* Dark Slate */
+}
+
+/* Global Resets and Base Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    line-height: 1.6;
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: white !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    color: var(--text-dark) !important;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Hero Offers Section */
+.hero-offers {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Car Cards */
+.car-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.car-card img {
+    object-fit: cover;
+    height: 250px;
+    width: 100%;
+}
+
+/* Search Section */
+.search-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.search-section input,
+.search-section select,
+.search-section button {
+    height: 50px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: darken(var(--primary-color), 10%);
+    border-color: darken(var(--primary-color), 10%);
+}
+
+/* Offers Carousel */
+#offersCarousel .carousel-item .card {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-section .row > div {
+        margin-bottom: 10px;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+/* Smooth Transitions */
+* {
+    transition: all 0.3s ease;
+}

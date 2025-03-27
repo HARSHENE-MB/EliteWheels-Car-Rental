@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteWheels - Car Rental</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            margin-bottom: 2rem;
+        }
+        .hero-offers {
+            background-color: #e9ecef;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        .car-card {
+            transition: transform 0.3s ease;
+        }
+        .car-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+    <style src="./css/styles.css"></style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">EliteWheels</a>
+            <button class="navbar-toggler" type="toggle" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="navbar-nav">
+                <a href="#" class="nav-link"><i class="bi bi-person-circle fs-4"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Container for main content -->
+    <div class="container">
+        <!-- Hero Offers Section -->
+        <div class="hero-offers text-center mb-4">
+            <p class="mb-0">Special Offer: <strong>20% Off First Booking!</strong> Use Code: ELITE20</p>
+        </div>
+
+        <!-- Luxury Car Carousel -->
+        <div id="luxuryCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="assets/pexels-photo-8376593.webp" class="d-block w-50" alt="Luxury Car">
+                </div>
+                <div class="carousel-item">
+                    <img src="/api/placeholder/1200/400" class="d-block w-100" alt="Luxury Car">
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section bg-white p-4 rounded shadow-sm mb-4">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Enter Location">
+                </div>
+                <div class="col-md-3">
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select">
+                        <option>Select Car Type</option>
+                        <option>Sedan</option>
+                        <option>SUV</option>
+                        <option>Luxury</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100">Find a Car</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Cars Section -->
+        <div class="popular-cars mb-4">
+            <h2 class="mb-3">Popular Rentals</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card car-card">
+                        <img src="/api/placeholder/400/250" class="card-img-top" alt="Car 1">
+                        <div class="card-body">
+                            <h5 class="card-title">BMW X5</h5>
+                            <p class="card-text">$120/day</p>
+                            <a href="#" class="btn btn-outline-primary">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card car-card">
+                        <img src="/api/placeholder/400/250" class="card-img-top" alt="Car 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Audi A6</h5>
+                            <p class="card-text">$100/day</p>
+                            <a href="#" class="btn btn-outline-primary">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card car-card">
+                        <img src="/api/placeholder/400/250" class="card-img-top" alt="Car 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Mercedes C-Class</h5>
+                            <p class="card-text">$130/day</p>
+                            <a href="#" class="btn btn-outline-primary">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offers Carousel -->
+        <div id="offersCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Summer Special</h5>
+                            <p class="card-text">Rent a luxury car and get 30% off on weekly bookings!</p>
+                            <a href="#" class="btn btn-success">View Offer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Weekend Getaway</h5>
+                            <p class="card-text">Weekend rentals at unbeatable prices!</p>
+                            <a href="#" class="btn btn-success">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-3 mt-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 EliteWheels | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
