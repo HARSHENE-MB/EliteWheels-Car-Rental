@@ -8,33 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f4f4f4;
-        }
-        .navbar {
-            margin-bottom: 2rem;
-        }
-        .hero-offers {
-            background-color: #e9ecef;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-        }
-        .car-card {
-            transition: transform 0.3s ease;
-        }
-        .car-card:hover {
-            transform: scale(1.05);
-        }
-    </style>
-    <style src="./css/styles.css"></style>
+    <link href="/CarRental_Frontend/css/styles.css" rel="stylesheet">
+    
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">EliteWheels</a>
+            <a class="navbar-brand" href="#">
+                <img src="./assets/upscalemedia-transformed.png" alt="Logo" height="60" width="110"> 
+            </a>            
             <button class="navbar-toggler" type="toggle" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,39 +44,84 @@
 
         <!-- Luxury Car Carousel -->
         <div id="luxuryCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#luxuryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#luxuryCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#luxuryCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/pexels-photo-8376593.webp" class="d-block w-50" alt="Luxury Car">
+                    <img src="assets/pexels-photo-8376593.webp" class="d-block w-100" style="max-height: 500px; object-fit: cover;" alt="Luxury Car 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="/api/placeholder/1200/400" class="d-block w-100" alt="Luxury Car">
+                    <img src="./assets/pexels-photo-733745(1).jpg" class="d-block w-100" style="max-height: 500px; object-fit: cover;" alt="Luxury Car 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/pexels-photo-30840781.webp" class="d-block w-100" style="max-height: 500px; object-fit: cover;" alt="Luxury Car 3">
                 </div>
             </div>
         </div>
 
-        <!-- Search Section -->
-        <div class="search-section bg-white p-4 rounded shadow-sm mb-4">
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="Enter Location">
-                </div>
-                <div class="col-md-3">
-                    <input type="date" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <select class="form-select">
-                        <option>Select Car Type</option>
-                        <option>Sedan</option>
-                        <option>SUV</option>
-                        <option>Luxury</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <button class="btn btn-primary w-100">Find a Car</button>
-                </div>
-            </div>
-        </div>
 
+        
+    <!-- search -->
+    <div class="advanced-search-section">
+        <div class="search-wrapper">
+            <div class="search-input-group" style="position: relative;">
+                <label>From</label>
+                <input type="text" placeholder="Pickup Location" class="form-control">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+            </div>
+
+            <div class="search-input-group">
+                <label>To</label>
+                <input type="text" placeholder="Drop-off Location" class="form-control">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+            </div>
+
+            <div class="search-input-group">
+                <label>Date</label>
+                <input type="date" class="form-control">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+            </div>
+
+            <div class="search-input-group">
+                <label>Car Type</label>
+                <select class="form-control">
+                    <option>Select Car Type</option>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                    <option>Luxury</option>
+                </select>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5C2 7 4 5 6.5 5h11C20 5 22 7 22 9.5V17zM8 5l1.5-3h5L16 5"></path>
+                    <line x1="2" y1="13" x2="22" y2="13"></line>
+                </svg>
+            </div>
+
+            <button class="search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Find a Car
+            </button>
+        </div>
+    </div>
+    
         <!-- Popular Cars Section -->
         <div class="popular-cars mb-4">
             <h2 class="mb-3">Popular Rentals</h2>
@@ -155,6 +183,95 @@
             </div>
         </div>
     </div>
+
+    <div class="rental-process">
+        <div class="process-step">
+            <div class="process-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h3>PICK YOUR TIME & LOCATION</h3>
+            <p>Select the perfect pickup time and location for your luxury car rental.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="process-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+            </div>
+            <h3>SCHEDULE YOUR PICKED CAR</h3>
+            <p>Confirm your luxury car selection and finalize your booking details.</p>
+        </div>
+
+        <div class="process-step">
+            <div class="process-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11H4a2 2 0 00-2 2v2a2 2 0 002 2h2.5l4 4h4.5a2 2 0 002-2v-4.5" />
+                </svg>
+                <div class="check-icon">✓</div>
+            </div>
+            <h3>RELY ON US!</h3>
+            <p>We'll ensure a smooth and hassle-free luxury car rental experience.</p>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+<section class="testimonials py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">What Our Clients Say</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The service was exceptional from start to finish. The car was in perfect condition and the pickup process was seamless."</p>
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">Michael Johnson</h6>
+                            <small class="testimonial-role">Business Executive</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've rented from many companies, but EliteWheels stands out for their professionalism and premium vehicle selection."</p>
+                    <div class="rating">
+                        ⭐⭐⭐⭐⭐
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">Sarah Williams</h6>
+                            <small class="testimonial-role">Travel Blogger</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The Porsche 911 I rented was flawless. The entire experience was worth every penny. Will definitely rent again!"</p>
+                    <div class="rating">
+                        ⭐⭐⭐⭐
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">David Chen</h6>
+                            <small class="testimonial-role">Entrepreneur</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
 
     <!-- Footer -->
     <footer class="bg-light text-center py-3 mt-4">
