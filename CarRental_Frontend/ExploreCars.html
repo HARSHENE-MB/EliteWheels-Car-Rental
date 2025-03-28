@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Explore</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            margin-bottom: 2rem;
+        }
+
+        .car-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .car-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .filter-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .hero-section {
+            background: url('https://source.unsplash.com/1600x900/?luxury-car') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .radio-inputs {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 0.5rem;
+            background-color: #EEE;
+            box-sizing: border-box;
+            box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+            padding: 0.25rem;
+            width: 100%;
+            font-size: 14px;
+            justify-content: center;
+        }
+        .radio-inputs .radio {
+            flex: 1 1 auto;
+            text-align: center;
+        }
+        .radio-inputs .radio input {
+            display: none;
+        }
+        .radio-inputs .radio .name {
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            border: none;
+            padding: .5rem 1rem;
+            color: rgba(51, 65, 85, 1);
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .radio-inputs .radio input:checked + .name {
+            background-color: #183B4E;
+            color: white;
+            font-weight: 600;
+            transform: translateY(-2px);
+        }
+
+        .car-image {
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        .brand-images img {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .brand-images img:hover, .brand-images img.selected {
+            transform: scale(1.1);
+            border: 2px solid #183B4E;
+        }
+        .btn{
+            background-color: #183B4E;
+            border: none;
+        }
+        .btn:hover{
+            background-color: #0e2633;
+            box-shadow:0px 5px 5px  #545e63;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">EliteWheels</a>
+            <button class="navbar-toggler" type="toggle" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="navbar-nav">
+                <a href="#" class="nav-link"><i class="bi bi-person-circle fs-4"></i></a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="hero-section">
+        <h1>Find Your Perfect Ride</h1>
+        <p>Choose from a variety of cars that suit your style and budget.</p>
+        <a href="#carSection" class="btn btn-primary btn-lg">Explore Cars</a>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Filters Section -->
+            <div class="col-md-3 p-4 filter-section">
+                <h4>Car Selection</h4>
+                <hr>
+                
+                <div class="mb-3">
+                    <label class="form-label">Brand</label>
+                    <div class="brand-images d-flex justify-content-around flex-wrap">
+                        <img src="./assets/Images/toyota logo.jpg" alt="Toyota" data-brand="Toyota">
+                        <img src="./assets/Images/bmw-logo.webp" alt="BMW" data-brand="BMW">
+                        <img src="./assets/Images/mercedes-logo.jpg" alt="Mercedes" data-brand="Mercedes">
+                        <img src="./assets/Images/rr logo.jpg" alt="Mercedes" data-brand="RR">
+                        <img src="./assets/Images/lambo logo.jpg" alt="Mercedes" data-brand="lambo">
+                        <img src="./assets/Images/range r logo.png" alt="Mercedes" data-brand="RangrRover">
+                        <img src="./assets/Images/honda logo.jpg" alt="Mercedes" data-brand="Honda">
+                        <img src="./assets/Images/ford logo.png" alt="Mercedes" data-brand="Ford">
+                        <img src="./assets/Images/suzuki logo.png" alt="Mercedes" data-brand="Suzuki">
+                        <img src="./assets/Images/nissan logo.jpg" alt="Mercedes" data-brand="Nissan">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Seats</label>
+                    <div class="radio-inputs">
+                        <!-- <label class="radio">
+                            <input type="radio" name="seats" value="any" checked>
+                            <span class="name"><i class="fas fa-chair"></i> Any</span>
+                        </label> -->
+                        <label class="radio">
+                            <input type="radio" name="seats" value="4" checked>
+                            <span class="name"><i class="fas fa-car me-1"></i> 4</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="seats" value="4">
+                            <span class="name"><i class="fa-solid fa-car-side me-1"></i> 5</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="seats" value="4">
+                            <span class="name"><i class="fas fa-users me-1"></i> 6</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="seats" value="7">
+                            <span class="name"><i class="fa-solid fa-van-shuttle me-1"></i> 7</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Rental Type</label>
+                    <div class="radio-inputs">
+                        <label class="radio">
+                            <input type="radio" name="rentalType" value="daily" checked>
+                            <span class="name"><i class="fa-solid fa-calendar-days me-1"></i> Daily</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="rentalType" value="hourly">
+                            <span class="name"><i class="fa-solid fa-clock me-1"></i> Hourly</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Price Range</label>
+                    <input type="range" class="form-range" id="priceRangeFilter" 
+                           min="50" max="500" step="50" value="100000">
+                    <small id="priceDisplay">Max Price:₹100K</small>
+                </div>
+
+                <button id="applyFilters" class="btn btn-primary w-100">
+                    Clear
+                </button>
+            </div>
+
+            <!-- Cars Display Section -->
+            <!-- <div class="col-md-9 p-4"> -->
+                <div class="col-md-9 px-4" id="carSection">
+                    <div class="radio-inputs" id="carTabs">
+                        <label class="radio">
+                            <input type="radio" name="radio" data-category="all" checked>
+                            <span class="name">All Cars</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="radio" data-category="sports">
+                            <span class="name">Sports Cars</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="radio" data-category="luxury">
+                            <span class="name">Luxury Cars</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="radio" data-category="suv">
+                            <span class="name">SUVs</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="radio" data-category="sedan">
+                            <span class="name">Sedans</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="radio" data-category="affordable">
+                            <span class="name">Affordable Cars</span>
+                        </label>
+                    </div>
+                    <div class="row mt-4" id="carsContainer"></div>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const cars = [
+            {
+                brand: 'Toyota',
+                model: 'Camry',
+                seats: 5,
+                rentalType: 'daily',
+                price: 75000,
+                category: 'sports',
+                image: './assets/Images/audi Q8-front.avif'
+            },
+            {
+                brand: 'BMW',
+                model: 'X5',
+                seats: 5,
+                rentalType: 'daily',
+                price: 20000,
+                category: 'sports',
+                image: './assets/Images/BMW X5-front.avif'
+            },
+            {
+                brand: 'Mercedes',
+                model: 'E-Class',
+                seats: 4,
+                rentalType: 'hourly',
+                price: 15000,
+                category: 'luxury',
+                image: './assets/Images/Mercedes-Benz GLS-front.avif'
+            },
+            {
+                brand: 'Tesla',
+                model: 'Model 3',
+                seats: 5,
+                rentalType: 'daily',
+                price: 18000,
+                category: 'sedan',
+                image: './assets/Images/aff-sedan-Maruti Dzire-f.avif'
+            },
+            { 
+                brand: 'Hyundai', 
+                model: 'Elantra', 
+                seats: 4,
+                rentalType: 'daily',
+                price: 7500, 
+                category: 'affordable', 
+                image: './assets/Images/aff-sedan-Hyundai Verna-f.avif' 
+            },
+            { 
+                brand: 'BMW', 
+                model: 'X7', 
+                seats: 4,
+                rentalType: 'daily',
+                price: 25000, 
+                category: 'suv',
+                image: './assets/Images/BMW 5-front.avif' 
+            }
+        ];
+
+
+        function displayCars(category) {
+            const container = document.getElementById('carsContainer');
+            container.innerHTML = '';
+            const filteredCars = category === 'all' ? cars : cars.filter(car => car.category === category);
+            filteredCars.forEach(car => {
+                const carCard = document.createElement('div');
+                carCard.className = 'col-md-4 mb-4';
+                carCard.innerHTML = `
+                    <div class="card car-card position-relative shadow-lg rounded-4 overflow-hidden">
+                        <img src="${car.image}" class="card-img-top car-image" alt="${car.brand} ${car.model}">
+                        <div class="card-body text-center">
+                            <div class="d-flex align-items-center justify-content-center mb-2">
+
+                                <h5 class="card-title mb-0">${car.model}</h5>
+                            </div>
+                            <p class="card-text text-muted">
+                                <i class="fas fa-users me-2"></i>${car.seats} Seats
+                                <br>
+                                <i class="fas fa-car me-2"></i>${car.rentalType.charAt(0).toUpperCase() + car.rentalType.slice(1)} Rental
+                            </p>
+                            <h4 class="mb-3" style="font-size: 17px;"><span class="fw-bold" style="font-size: 21px;color:#183B4E">₹${car.price}</span>/${car.rentalType === 'daily' ? 'day' : 'hour'}</h4>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-car-alt me-2"></i>Rent Now
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(carCard);
+            });
+        }
+
+        document.querySelectorAll('.radio-inputs .radio input').forEach(tab => {
+            tab.addEventListener('change', function () {
+                
+                displayCars(this.getAttribute('data-category'));
+            });
+        });
+
+        displayCars('all');
+
+        function applyFilters() {
+            const brandFilter = document.getElementById('brandFilter').value;
+            const seatsFilter = document.getElementById('seatsFilter').value;
+            const rentalTypeFilter = document.getElementById('rentalTypeFilter').value;
+            const priceRangeFilter = document.getElementById('priceRangeFilter').value;
+            const priceDisplay = document.getElementById('priceDisplay');
+
+            priceDisplay.textContent = `Max Price: $${priceRangeFilter}`;
+
+            const filteredCars = cars.filter(car => 
+                (!brandFilter || car.brand === brandFilter) &&
+                (!seatsFilter || car.seats == seatsFilter) &&
+                (!rentalTypeFilter || car.rentalType === rentalTypeFilter) &&
+                car.price <= priceRangeFilter
+            );
+
+            // displayCars(filteredCars);
+        }
+
+        document.getElementById('applyFilters').addEventListener('click', applyFilters);
+        document.getElementById('priceRangeFilter').addEventListener('input', (e) => {
+            document.getElementById('priceDisplay').textContent = `Max Price: $${e.target.value}`;
+        });
+
+        // Initial display of all cars
+        // displayCars(cars);
+    </script>
+</body>
+</html>
