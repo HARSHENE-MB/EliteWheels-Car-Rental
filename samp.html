@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section with Sparkle</title>
+    <style>
+        .hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust hero section height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* Ensures dark background */
+  overflow: hidden;
+}
+
+.car-image {
+  width: 100%;
+  height: auto;
+}
+
+.headlight-sparkle {
+  position: absolute;
+  top: 48%;  /* Adjust to match headlight position */
+  left: 62%; /* Adjust to match headlight position */
+  width: 90px; /* Increased size */
+  height: 50px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 80%);
+  border-radius: 50%;
+  filter: blur(8px);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.9); /* Stronger glow */
+  animation: sparkle 1.2s infinite alternate;
+}
+
+@keyframes sparkle {
+  0% { transform: scale(1); opacity: 1; filter: blur(10px); }
+  100% { transform: scale(1.8); opacity: 0.5; filter: blur(15px); }
+}
+
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="./EliteWheels-FrontEnd/Users/assets/Images/b1 (1).jpg" alt="Car Image" class="car-image" />
+        <div class="headlight-sparkle"></div>
+      </div>
+      
+    <script>
+        const sparkle = document.querySelector(".headlight-sparkle");
+
+setInterval(() => {
+  const randomScale = 1.5 + Math.random() * 0.5;
+  const randomBlur = 8 + Math.random() * 5;
+  sparkle.style.transform = `scale(${randomScale})`;
+  sparkle.style.filter = `blur(${randomBlur}px)`;
+}, 400);
+
+
+    </script>
+</body>
+</html>

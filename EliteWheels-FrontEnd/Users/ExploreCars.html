@@ -19,10 +19,32 @@
         }
 
         .navbar {
-            margin-bottom: 2rem;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0%;
+            z-index: 1000;
+            background-color: white; 
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
         }
+        
+        .navbar-nav .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            margin-right: 15px;
+            }
+                
+        .navbar .nav-link:hover {
+            color: #d4af37;
+            }
+                
+        .navbar .text-danger {
+            font-weight: bold;
+            }
 
-        .car-card {
+        /* .car-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
@@ -30,7 +52,7 @@
         .car-card:hover {
             transform: scale(1.03);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+        } */
 
         .filter-section {
             background-color: white;
@@ -39,11 +61,92 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .hero-section {
-            background: url('https://source.unsplash.com/1600x900/?luxury-car') center/cover;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-        }
+    position: relative;
+    background: url('./assets/Images/b1 (1).jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    height: 80vh; /* Increased height */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 40px;
+}
+
+/* Gradient Overlay */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+    z-index: 1;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out forwards;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out 0.3s forwards;
+}
+
+.hero-section a {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out 0.6s forwards;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #d4af37;
+    color: white;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Headlight Sparkle Effect */
+.headlight-sparkle {
+    position: absolute;
+    top: 34%;  /* Adjust to match headlight position */
+    left: 60%; /* Adjust to match headlight position */
+    width: 160px; /* Bigger sparkle */
+    height: 160px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 80%);
+    border-radius: 50%;
+    filter: blur(5px);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 1); /* Stronger glow */
+    /* animation: sparkle 1.2s infinite alternate; */
+    animation: sparkle 1.0s infinite alternate; /* Faster blink */
+}
+
+@keyframes sparkle {
+    0% { transform: scale(1); opacity: 1; filter: blur(12px); }
+    100% { transform: scale(2); opacity: 0.5; filter: blur(20px); }
+}
+
+
         .radio-inputs {
             position: relative;
             display: flex;
@@ -76,17 +179,17 @@
             transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
         .radio-inputs .radio input:checked + .name {
-            background-color: #183B4E;
+            background-color: #212529;
             color: white;
             font-weight: 600;
             transform: translateY(-2px);
         }
 
-        .car-image {
+        /* .car-image {
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
-        }
+        } */
 
         .price-tag {
             position: absolute;
@@ -117,16 +220,108 @@
         }
         .brand-images img:hover, .brand-images img.selected {
             transform: scale(1.1);
-            border: 2px solid #183B4E;
+            border: 2px solid #212529;
         }
         .btn{
-            background-color: #183B4E;
+            background-color: #212529;
+            color: #d4af37;
             border: none;
         }
         .btn:hover{
-            background-color: #0e2633;
+            background-color: #161617;
             box-shadow:0px 5px 5px  #545e63;
         }
+
+        .card {
+    position: relative;
+    width: 22em;
+    height: 30em;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 1.5em;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.image {
+    width: 100%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: rgb(241, 241, 241);
+    border-radius: 12px 12px 0 0;
+}
+
+.image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center;
+    padding: 1.2em 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #000;
+}
+
+.car-seats {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 1.3em;
+    color: #000;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.rent-now {
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    background: #d4af37;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    padding: 1em;
+    transition: all 0.3s ease;
+    opacity: 0;
+    border-radius: 0 0 12px 12px;
+    font-size: 1.2em;
+}
+
+.card:hover .rent-now {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card:hover .price {
+    opacity: 0;
+}
+
+.radio-inputs .radio .name:hover, 
+.radio-inputs .radio input:checked + .name, 
+#carTabs .radio .name:hover {
+    color: #d4af37;
+}
+
+
 
     </style>
 </head>
@@ -155,10 +350,21 @@
     </nav>
     
     <div class="hero-section">
-        <h1>Find Your Perfect Ride</h1>
-        <p>Choose from a variety of cars that suit your style and budget.</p>
-        <a href="#carSection" class="btn btn-primary btn-lg">Explore Cars</a>
+        <!-- <h1>Drive Your Dream, <br> 
+            <span class="aligned-text">Anytime, Anywhere</span>
+        </h1> -->
+        <h1>Drive Your Dream, </h1>
+        <h1>Anytime, Anywhere</h1>
+        <p>
+            Choose the perfect ride for your trip and hit the road with ease.
+        </p>
+        <a href="#carSection" class="btn btn-primary btn-lg">Rent Now</a>
+        <div class="headlight-sparkle"></div>
     </div>
+    
+    
+    
+    
 
     <div class="container-fluid">
         <div class="row">
@@ -237,7 +443,7 @@
 
             <!-- Cars Display Section -->
             <!-- <div class="col-md-9 p-4"> -->
-                <div class="col-md-9 px-4" id="carSection">
+                <div class="col-md-9 p-4" id="carSection">
                     <div class="radio-inputs" id="carTabs">
                         <label class="radio">
                             <input type="radio" name="radio" data-category="all" checked>
@@ -269,6 +475,7 @@
             <!-- </div> -->
         </div>
     </div>
+    <!-- <img src="./assets/Images/b1.jpg" alt=""> -->
    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
