@@ -235,7 +235,7 @@
         .card {
     position: relative;
     width: 22em;
-    height: 30em;
+    height: 25em;
     box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: all 120ms;
@@ -243,7 +243,7 @@
     align-items: center;
     justify-content: center;
     background: #fff;
-    padding: 1.5em;
+    /* padding: 1.5em; */
     flex-direction: column;
     overflow: hidden;
     border-radius: 12px;
@@ -296,7 +296,7 @@
     bottom: -60px;
     width: 100%;
     background: #d4af37;
-    color: #fff;
+    color: #0d0d0d;
     text-align: center;
     font-weight: 600;
     padding: 1em;
@@ -311,7 +311,7 @@
     opacity: 1;
 }
 
-.card:hover .price {
+.card:hover .features {
     opacity: 0;
 }
 
@@ -319,6 +319,11 @@
 .radio-inputs .radio input:checked + .name, 
 #carTabs .radio .name:hover {
     color: #d4af37;
+}
+.features {
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
 
@@ -369,7 +374,7 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Filters Section -->
-            <div class="col-md-3 p-4 filter-section">
+            <div class="col-md-3 p-4 mt-4 filter-section">
                 <h4>Car Selection</h4>
                 <hr>
                 

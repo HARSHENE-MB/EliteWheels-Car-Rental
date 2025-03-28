@@ -76,10 +76,13 @@ function displayCars(category) {
             <h4 class="price mb-2">
                 <span class="fw-bold" style="font-size: 28px;color:#183B4E">₹${car.price}</span>/${car.rentalType === 'daily' ? 'day' : 'hour'}
             </h4>
+            <p class="features text-success"><i class="fas fa-check-circle"></i> Free Delivery</p>
+            <p class="features text-success"><i class="fas fa-check-circle"></i> Insurance Included</p>
         </div>
         <div class="rent-now">Rent Now</div>
     </div>
 `;
+
         container.appendChild(carCard);
     });
 }
