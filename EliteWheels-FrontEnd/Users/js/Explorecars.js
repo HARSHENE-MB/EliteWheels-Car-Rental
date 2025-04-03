@@ -64,25 +64,24 @@ function displayCars(category) {
         const carCard = document.createElement('div');
         carCard.className = 'col-md-4 mb-4';
         carCard.innerHTML = `
-            <div class="card car-card position-relative shadow-lg rounded-4 overflow-hidden">
-                <img src="${car.image}" class="card-img-top car-image" alt="${car.brand} ${car.model}">
-                <div class="card-body text-center">
-                    <div class="d-flex align-items-center justify-content-center mb-2">
-
-                        <h5 class="card-title mb-0">${car.model}</h5>
-                    </div>
-                    <p class="card-text text-muted">
-                        <i class="fas fa-users me-2"></i>${car.seats} Seats
-                        <br>
-                        <i class="fas fa-car me-2"></i>${car.rentalType.charAt(0).toUpperCase() + car.rentalType.slice(1)} Rental
-                    </p>
-                    <h4 class="mb-3" style="font-size: 17px;"><span class="fw-bold" style="font-size: 21px;color:#183B4E">₹${car.price}</span>/${car.rentalType === 'daily' ? 'day' : 'hour'}</h4>
-                    <button class="btn btn-primary w-100">
-                        <i class="fas fa-car-alt me-2"></i>Rent Now
-                    </button>
-                </div>
-            </div>
-        `;
+    <div class="card car-card position-relative shadow-lg rounded-4 overflow-hidden">
+        <div class="image">
+            <img src="${car.image}" class="card-img-top car-image" alt="${car.brand} ${car.model}">
+        </div>
+        <div class="card-body text-center">
+            <h5 class="card-title mb-1">${car.model}</h5>
+            <p class="car-seats text-muted">
+                <i class="fas fa-users me-2"></i>${car.seats} Seats
+            </p>
+            <h4 class="price mb-2">
+                <span class="fw-bold" style="font-size: 28px;color:#183B4E">₹${car.price}</span>/${car.rentalType === 'daily' ? 'day' : 'hour'}
+            </h4>
+            <p class="features text-success"><i class="fas fa-check-circle"></i> Free Delivery</p>
+            <p class="features text-success"><i class="fas fa-check-circle"></i> Insurance Included</p>
+        </div>
+        <div class="rent-now">Rent Now</div>
+    </div>
+`;
 
         container.appendChild(carCard);
     });
@@ -120,6 +119,16 @@ document.getElementById('applyFilters').addEventListener('click', applyFilters);
 document.getElementById('priceRangeFilter').addEventListener('input', (e) => {
     document.getElementById('priceDisplay').textContent = `Max Price: $${e.target.value}`;
 });
+
+const sparkle = document.querySelector(".headlight-sparkle");
+
+setInterval(() => {
+    const randomScale = 1.8 + Math.random() * 0.4;
+    const randomBlur = 10 + Math.random() * 6;
+    sparkle.style.transform = `scale(${randomScale})`;
+    sparkle.style.filter = `blur(${randomBlur}px)`;
+}, 400);
+
 
 // Initial display of all cars
 // displayCars(cars);
