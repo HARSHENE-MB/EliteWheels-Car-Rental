@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="/CarRental_Frontend/css/styles.css" rel="stylesheet">
+    <link href="/EliteWheels-FrontEnd/Users/css/styles.css" rel="stylesheet">
     
 </head>
 <body>
@@ -23,10 +23,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/ExploreCars.html">Explore</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Support.html">Support</a></li>
                 </ul>
             </div>
             <div class="navbar-nav">
@@ -121,6 +121,8 @@
             </button>
         </div>
     </div>
+    </div>
+</br>
     <!-- Popular Cars Section -->
     <div class="container popular-cars">
         <h2>Our Premium Collection</h2>
@@ -130,13 +132,13 @@
                     <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Ford Mustang">
                     <div class="card-body">
                         <h5 class="card-title">Ford Mustang GT</h5>
-                        <div class="d-flex justify-content-between mb-3">
+                        <div class="d-flex justify-content-between mb-3" style="color: white;">
                             <span><i class="bi bi-speedometer2 me-1"></i> 5.0L V8</span>
                             <span><i class="bi bi-people me-1"></i> 4 Seats</span>
                             <span><i class="bi bi-gear me-1"></i> Automatic</span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="card-text mb-0">$129<small>/day</small></h4>
+                            <h4 class="card-text mb-0">Rs.15000<small>/day</small></h4>
                             <a href="#" class="btn btn-outline-primary">Rent Now</a>
                         </div>
                     </div>
@@ -148,13 +150,13 @@
                     <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Porsche 911">
                     <div class="card-body">
                         <h5 class="card-title">Porsche 911 Carrera</h5>
-                        <div class="d-flex justify-content-between mb-3">
+                        <div class="d-flex justify-content-between mb-3" style="color: white;">
                             <span><i class="bi bi-speedometer2 me-1"></i> 3.0L Turbo</span>
                             <span><i class="bi bi-people me-1"></i> 2 Seats</span>
                             <span><i class="bi bi-gear me-1"></i> PDK</span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="card-text mb-0">$249<small>/day</small></h4>
+                            <h4 class="card-text mb-0">Rs.20000<small>/day</small></h4>
                             <a href="#" class="btn btn-outline-primary">Rent Now</a>
                         </div>
                     </div>
@@ -166,13 +168,13 @@
                     <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Land Rover">
                     <div class="card-body">
                         <h5 class="card-title">Land Rover Defender</h5>
-                        <div class="d-flex justify-content-between mb-3">
+                        <div class="d-flex justify-content-between mb-3" style="color: white;">
                             <span><i class="bi bi-speedometer2 me-1"></i> 3.0L Diesel</span>
                             <span><i class="bi bi-people me-1"></i> 7 Seats</span>
                             <span><i class="bi bi-gear me-1"></i> Automatic</span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center">
-                            <h4 class="card-text mb-0">$179<small>/day</small></h4>
+                            <h4 class="card-text mb-0">Rs.30000<small>/day</small></h4>
                             <a href="#" class="btn btn-outline-primary">Rent Now</a>
                         </div>
                     </div>
@@ -244,17 +246,15 @@
         </div>
     </div>
 
-    <!-- Testimonials -->
+  <!-- Testimonials -->
 <section class="testimonials py-5">
-    <div class="container">
+    <div class="container overflow-hidden">
         <h2 class="section-title text-center mb-5">What Our Clients Say</h2>
-        <div class="row">
-            <div class="col-md-4">
+        <div class="testimonial-slider-wrapper">
+            <div class="testimonial-slider d-flex">
                 <div class="testimonial-card">
                     <p class="testimonial-text">"The service was exceptional from start to finish. The car was in perfect condition and the pickup process was seamless."</p>
-                    <div class="rating">
-                        ⭐⭐⭐⭐⭐
-                    </div>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
                     <div class="d-flex align-items-center">
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
                         <div>
@@ -263,13 +263,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
                 <div class="testimonial-card">
                     <p class="testimonial-text">"I've rented from many companies, but EliteWheels stands out for their professionalism and premium vehicle selection."</p>
-                    <div class="rating">
-                        ⭐⭐⭐⭐⭐
-                    </div>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
                     <div class="d-flex align-items-center">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
                         <div>
@@ -278,13 +274,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
                 <div class="testimonial-card">
                     <p class="testimonial-text">"The Porsche 911 I rented was flawless. The entire experience was worth every penny. Will definitely rent again!"</p>
-                    <div class="rating">
-                        ⭐⭐⭐⭐
-                    </div>
+                    <div class="rating">⭐⭐⭐⭐</div>
                     <div class="d-flex align-items-center">
                         <img src="https://randomuser.me/api/portraits/men/75.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
                         <div>
@@ -293,22 +285,84 @@
                         </div>
                     </div>
                 </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Fantastic customer support and a smooth rental experience. Highly recommended!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/women/50.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">Emma Brown</h6>
+                            <small class="testimonial-role">Marketing Manager</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Best car rental experience I've had. The staff was friendly, and the process was effortless."</p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">John Smith</h6>
+                            <small class="testimonial-role">Software Engineer</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-    
 
     <!-- Footer -->
-    <footer class="bg-light text-center py-3 mt-4">
+    <footer>
         <div class="container">
-            <p class="mb-0">&copy; 2025 EliteWheels | All Rights Reserved</p>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>EliteWheels</h5>
+                    <p>Premium car rental service offering luxury vehicles for business and leisure travel across major cities worldwide.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Fleet</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#">Luxury Car Rental</a></li>
+                        <li><a href="#">Airport Transfers</a></li>
+                        <li><a href="#">Corporate Rentals</a></li>
+                        <li><a href="#">Long Term Leasing</a></li>
+                        <li><a href="#">Chauffeur Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul>
+                        <li><i class="bi bi-geo-alt me-2"></i> 123 Premium Ave, Luxury City</li>
+                        <li><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
+                        <li><i class="bi bi-envelope me-2"></i> info@elitewheels.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0">&copy; 2025 EliteWheels. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
     <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

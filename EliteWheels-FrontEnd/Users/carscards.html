@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteWheels - Choose Your Ride</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #3e3e3e 0%, #0d0d0e 100%);
+            padding-top: 80px;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+            height: 100vh; /* Ensure body takes full height */
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            margin-right: 15px;
+        }
+
+        .navbar .nav-link:hover {
+            color: #d4af37;
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 20%, rgba(212, 175, 55, 0) 70%);
+            animation: float 8s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0.8; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        /* Card Container */
+        .card-container {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        /* Card Row */
+        .card-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px; /* Limit max width for larger screens */
+            gap: 30px; /* Consistent spacing between cards */
+        }
+
+        /* Cards */
+        .category-card {
+            background: linear-gradient(135deg, #ffffff 0%, #e9e9e7 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: #d4af37;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-card h2 {
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .category-card p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .category-card .btn-choose {
+            background: linear-gradient(135deg, #d4af37 0%, #8c6900 100%);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .category-card .btn-choose:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, #a67c00 0%, #d4af37 100%);
+            color: white;
+        }
+
+        /* Card Overlay Effect */
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card-container {
+                padding: 20px;
+            }
+            .card-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .category-card {
+                max-width: 100%;
+            }
+            .category-card img {
+                height: 150px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .category-card {
+                flex: 1; /* Ensure cards take equal space */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/upscalemedia-transformed.png" alt="Logo" height="60" width="110"> 
+            </a>            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/ExploreCars.html">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Support.html">Support</a></li>
+                </ul>
+            </div>
+            <div class="navbar-nav">
+                <a href="#" class="nav-link"><i class="bi bi-person-circle fs-4"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background Animation -->
+    <div class="background-animation" id="particles"></div>
+
+    <!-- Card Section -->
+    <section class="card-container">
+        <div class="card-row">
+            <!-- Affordable Card -->
+            <div class="category-card">
+                <img src="./assets/Images/aff-sedan-Maruti Dzire-f.avif" alt="Affordable Car">
+                <h2>Affordable</h2>
+                <p>Rent reliable cars at budget-friendly prices for everyday travel.</p>
+                <a href="#" class="btn-choose">Choose Affordable</a>
+            </div>
+            <!-- Luxury Card -->
+            <div class="category-card">
+                <img src="/EliteWheels-FrontEnd/Users/assets/f9a6db2d-78dc-4e7a-8f43-c57a9e334292.jpg" alt="Luxury Car">
+                <h2>Luxury</h2>
+                <p>Experience premium comfort and style with our luxury fleet.</p>
+                <a href="/EliteWheels-FrontEnd/Users/LuxuryCars.html" class="btn-choose">Choose Luxury</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Background Animation Script -->
+    <script>
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 20 + 10;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 15000);
+        }
+
+        // Generate particles every 500ms
+        setInterval(createParticle, 500);
+    </script>
+</body>
+</html>

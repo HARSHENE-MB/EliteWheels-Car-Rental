@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteWheels - Luxury Cars</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0e 100%);
+            padding-top: 80px;
+            font-family: 'Poppins', sans-serif;
+            color: #e0e0e0;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            margin-right: 15px;
+        }
+
+        .navbar .nav-link:hover {
+            color: #d4af37;
+        }
+
+        /* Header */
+        .luxury-header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0.8));
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-header h1 {
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .luxury-header p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Enhanced Background Animation */
+        .background-animation {
+            position: absolute;
+            bottom: 0; /* Start from bottom of header */
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 20%, rgba(212, 175, 55, 0) 70%);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0.9;
+                bottom: 0; /* Start at bottom of header */
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateY(-50%) scale(1.2);
+            }
+            100% {
+                transform: translateY(-100%) scale(0.8);
+                opacity: 0;
+                bottom: 100%; /* Move to top of header */
+            }
+        }
+
+        /* Brand Section */
+        .brand-section {
+            padding: 40px 0;
+            position: relative;
+        }
+
+        .brand-section h2 {
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .brand-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #d4af37;
+        }
+
+        /* Car Card */
+        .car-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border-color: #d4af37;
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .car-card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .car-card-body h5 {
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .car-card-body p {
+            color: #b0b0b0;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-rent {
+            background: linear-gradient(135deg, #d4af37 0%, #a67c00 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-rent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, #a67c00 0%, #886905 100%);
+            color: white;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-block;
+            margin: 40px auto;
+            text-align: center;
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 10px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #d4af37;
+            color: #fff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .luxury-header h1 {
+                font-size: 2rem;
+            }
+            .brand-section h2 {
+                font-size: 2rem;
+            }
+            .car-card img {
+                height: 150px;
+            }
+            .car-card-body h5 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/upscalemedia-transformed.png" alt="Logo" height="60" width="110"> 
+            </a>            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/ExploreCars.html">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Support.html">Support</a></li>
+                </ul>
+            </div>
+            <div class="navbar-nav">
+                <a href="#" class="nav-link"><i class="bi bi-person-circle fs-4"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header with Animation -->
+    <section class="luxury-header">
+        <div class="background-animation" id="particles"></div>
+        <div class="container">
+            <h1>Luxury Cars Collection</h1>
+            <p>Indulge in the ultimate driving experience with our elite fleet of luxury vehicles.</p>
+        </div>
+    </section>
+
+    <!-- Luxury Cars by Brand -->
+    <div class="container">
+        <!-- Brand: Mercedes-Benz -->
+        <section class="brand-section">
+            <h2>Mercedes-Benz</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="./assets/pexels-photo-30840781.webp" alt="Mercedes S-Class">
+                        <div class="car-card-body">
+                            <h5>S-Class</h5>
+                            <p>$150/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="./assets/pexels-photo-733745.webp" alt="Mercedes E-Class">
+                        <div class="car-card-body">
+                            <h5>E-Class</h5>
+                            <p>$120/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="./assets/sports-car-pkw-auto-vehicle-94272.webp" alt="Mercedes GLE">
+                        <div class="car-card-body">
+                            <h5>GLE</h5>
+                            <p>$140/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="./assets/pexels-photo-27985144.webp" alt="Mercedes AMG GT">
+                        <div class="car-card-body">
+                            <h5>AMG GT</h5>
+                            <p>$200/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand: BMW -->
+        <section class="brand-section">
+            <h2>BMW</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+7+Series" alt="BMW 7 Series">
+                        <div class="car-card-body">
+                            <h5>7 Series</h5>
+                            <p>$145/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+5+Series" alt="BMW 5 Series">
+                        <div class="car-card-body">
+                            <h5>5 Series</h5>
+                            <p>$115/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+X7" alt="BMW X7">
+                        <div class="car-card-body">
+                            <h5>X7</h5>
+                            <p>$135/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+M8" alt="BMW M8">
+                        <div class="car-card-body">
+                            <h5>M8</h5>
+                            <p>$190/day</p>
+                            <a href="#" class="btn-rent">Rent Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="/EliteWheels-FrontEnd/Users/ChooseRide.html" class="back-btn">Back to Categories</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Enhanced Animation Script -->
+    <script>
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 15 + 5; // Smaller, varied size for elegance
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}%`; // Random horizontal position
+            particle.style.bottom = '0'; // Start at bottom of header
+            
+            // Randomize animation duration and delay for a natural flow
+            const duration = Math.random() * 6 + 4; // Between 4-10s
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${Math.random() * 2}s`; // Slight delay for stagger
+            
+            document.getElementById('particles').appendChild(particle);
+            
+            // Remove particle after animation completes
+            setTimeout(() => particle.remove(), duration * 1000);
+        }
+
+        // Generate particles every 300ms for a smoother, more luxurious effect
+        setInterval(createParticle, 300);
+    </script>
+</body>
+</html>
