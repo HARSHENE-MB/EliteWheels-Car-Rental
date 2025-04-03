@@ -12,323 +12,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            background-color: #f4f4f4;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .navbar {
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0%;
-            z-index: 1000;
-            background-color: white; 
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
-        }
-        
-        .navbar-nav .nav-link {
-            font-size: 18px;
-            font-weight: 500;
-            color: black;
-            margin-right: 15px;
-            }
-                
-        .navbar .nav-link:hover {
-            color: #d4af37;
-            }
-                
-        .navbar .text-danger {
-            font-weight: bold;
-            }
-
-        /* .car-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .car-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        } */
-
-        .filter-section {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .hero-section {
-    position: relative;
-    background: url('./assets/Images/b1 (1).jpg') center/cover no-repeat;
-    color: white;
-    text-align: center;
-    height: 80vh; /* Increased height */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 80px 40px;
-}
-
-/* Gradient Overlay */
-.hero-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
-    z-index: 1;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-section h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-    position: relative;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeInUp 1s ease-in-out forwards;
-}
-
-.hero-section p {
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeInUp 1s ease-in-out 0.3s forwards;
-}
-
-.hero-section a {
-    position: relative;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeInUp 1s ease-in-out 0.6s forwards;
-    padding: 12px 24px;
-    font-size: 1.2rem;
-    background-color: #d4af37;
-    color: white;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-}
-
-/* Headlight Sparkle Effect */
-.headlight-sparkle {
-    position: absolute;
-    top: 34%;  /* Adjust to match headlight position */
-    left: 60%; /* Adjust to match headlight position */
-    width: 160px; /* Bigger sparkle */
-    height: 160px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0) 80%);
-    border-radius: 50%;
-    filter: blur(5px);
-    box-shadow: 0 0 50px rgba(255, 255, 255, 1); /* Stronger glow */
-    /* animation: sparkle 1.2s infinite alternate; */
-    animation: sparkle 1.0s infinite alternate; /* Faster blink */
-}
-
-@keyframes sparkle {
-    0% { transform: scale(1); opacity: 1; filter: blur(12px); }
-    100% { transform: scale(2); opacity: 0.5; filter: blur(20px); }
-}
-
-
-        .radio-inputs {
-            position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            border-radius: 0.5rem;
-            background-color: #EEE;
-            box-sizing: border-box;
-            box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
-            padding: 0.25rem;
-            width: 100%;
-            font-size: 14px;
-            justify-content: center;
-        }
-        .radio-inputs .radio {
-            flex: 1 1 auto;
-            text-align: center;
-        }
-        .radio-inputs .radio input {
-            display: none;
-        }
-        .radio-inputs .radio .name {
-            display: flex;
-            cursor: pointer;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.5rem;
-            border: none;
-            padding: .5rem 1rem;
-            color: rgba(51, 65, 85, 1);
-            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-        }
-        .radio-inputs .radio input:checked + .name {
-            background-color: #212529;
-            color: white;
-            font-weight: 600;
-            transform: translateY(-2px);
-        }
-
-        /* .car-image {
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-        } */
-
-        .price-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #007bff;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animated-card {
-            animation: fadeIn 0.5s ease forwards;
-            opacity: 0;
-        }
-        .brand-images img {
-            width: 60px;
-            height: 40px;
-            object-fit: contain;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
-        .brand-images img:hover, .brand-images img.selected {
-            transform: scale(1.1);
-            border: 2px solid #212529;
-        }
-        .btn{
-            background-color: #212529;
-            color: #d4af37;
-            border: none;
-        }
-        .btn:hover{
-            background-color: #161617;
-            box-shadow:0px 5px 5px  #545e63;
-        }
-
-        .card {
-    position: relative;
-    width: 22em;
-    height: 25em;
-    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 120ms;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    /* padding: 1.5em; */
-    flex-direction: column;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-.image {
-    width: 100%;
-    height: 75%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: rgb(241, 241, 241);
-    border-radius: 12px 12px 0 0;
-}
-
-.image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-body {
-    text-align: center;
-    padding: 1.2em 0;
-    transition: opacity 0.3s ease;
-}
-
-.card-title {
-    font-size: 1.4em;
-    font-weight: 700;
-    color: #000;
-}
-
-.car-seats {
-    font-size: 1.2em;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-.price {
-    font-size: 1.3em;
-    color: #000;
-    font-weight: bold;
-    transition: opacity 0.3s ease;
-}
-
-.rent-now {
-    position: absolute;
-    bottom: -60px;
-    width: 100%;
-    background: #d4af37;
-    color: #0d0d0d;
-    text-align: center;
-    font-weight: 600;
-    padding: 1em;
-    transition: all 0.3s ease;
-    opacity: 0;
-    border-radius: 0 0 12px 12px;
-    font-size: 1.2em;
-}
-
-.card:hover .rent-now {
-    bottom: 0;
-    opacity: 1;
-}
-
-.card:hover .features {
-    opacity: 0;
-}
-
-.radio-inputs .radio .name:hover, 
-.radio-inputs .radio input:checked + .name, 
-#carTabs .radio .name:hover {
-    color: #d4af37;
-}
-.features {
-    font-size: 0.9em;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-
-
-
-    </style>
+    
 </head>
 <body>
     <!-- Navbar -->
@@ -366,8 +50,6 @@
         <a href="#carSection" class="btn btn-primary btn-lg">Rent Now</a>
         <div class="headlight-sparkle"></div>
     </div>
-    
-    
     
     
 
@@ -411,11 +93,11 @@
                         </label>
                         <label class="radio">
                             <input type="radio" name="seats" value="4">
-                            <span class="name"><i class="fas fa-users me-1"></i> 6</span>
-                        </label>
+                            <span class="name"><i class="fa-solid fa-van-shuttle me-1"></i> 6</span>
+                        </label> 
                         <label class="radio">
                             <input type="radio" name="seats" value="7">
-                            <span class="name"><i class="fa-solid fa-van-shuttle me-1"></i> 7</span>
+                            <span class="name"><i class="fas fa-users me-1"></i> 7</span>
                         </label>
                     </div>
                 </div>
@@ -424,12 +106,16 @@
                     <label class="form-label">Rental Type</label>
                     <div class="radio-inputs">
                         <label class="radio">
-                            <input type="radio" name="rentalType" value="daily" checked>
+                            <input type="radio" name="rentalType" value="hourly" checked>
+                            <span class="name"><i class="fa-solid fa-clock me-1"></i> Hourly</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="rentalType" value="daily">
                             <span class="name"><i class="fa-solid fa-calendar-days me-1"></i> Daily</span>
                         </label>
                         <label class="radio">
-                            <input type="radio" name="rentalType" value="hourly">
-                            <span class="name"><i class="fa-solid fa-clock me-1"></i> Hourly</span>
+                            <input type="radio" name="rentalType" value="weekly">
+                            <span class="name"><i class="fa-solid fa-clock me-1"></i> Weekly</span>
                         </label>
                     </div>
                 </div>
@@ -455,24 +141,28 @@
                             <span class="name">All Cars</span>
                         </label>
                         <label class="radio">
-                            <input type="radio" name="radio" data-category="sports">
-                            <span class="name">Sports Cars</span>
+                            <input type="radio" name="radio" data-category="Hatchback">
+                            <span class="name">Hatchback</span>
                         </label>
                         <label class="radio">
-                            <input type="radio" name="radio" data-category="luxury">
-                            <span class="name">Luxury Cars</span>
+                            <input type="radio" name="radio" data-category="Coupe">
+                            <span class="name">Coupe</span>
                         </label>
                         <label class="radio">
                             <input type="radio" name="radio" data-category="suv">
                             <span class="name">SUVs</span>
                         </label>
                         <label class="radio">
+                            <input type="radio" name="radio" data-category=" muv">
+                            <span class="name"> MUVs</span>
+                        </label>
+                        <label class="radio">
                             <input type="radio" name="radio" data-category="sedan">
                             <span class="name">Sedans</span>
                         </label>
                         <label class="radio">
-                            <input type="radio" name="radio" data-category="affordable">
-                            <span class="name">Affordable Cars</span>
+                            <input type="radio" name="radio" data-category="Convertible">
+                            <span class="name">Convertible</span>
                         </label>
                     </div>
                     <div class="row mt-4" id="carsContainer"></div>
