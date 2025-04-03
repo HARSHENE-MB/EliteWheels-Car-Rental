@@ -47,7 +47,7 @@ body {
 }
 .hero-section {
 position: relative;
-background: url('./assets/Images/b1 (1).jpg') center/cover no-repeat;
+background: url('../assets/Images/b1\ \(1\).jpg') center/cover no-repeat;
 color: white;
 text-align: center;
 height: 80vh; /* Increased height */
