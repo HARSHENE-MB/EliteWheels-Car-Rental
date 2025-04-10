@@ -76,7 +76,7 @@
         /* Enhanced Background Animation */
         .background-animation {
             position: absolute;
-            bottom: 0;
+            bottom: 0; /* Start from bottom of header */
             left: 0;
             width: 100%;
             height: 100%;
@@ -95,53 +95,20 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0) scale(0.8); opacity: 0.9; bottom: 0; }
-            50% { opacity: 0.6; transform: translateY(-50%) scale(1.2); }
-            100% { transform: translateY(-100%) scale(0.8); opacity: 0; bottom: 100%; }
-        }
-
-        /* Brand Navigation */
-        .brand-nav {
-            position: sticky;
-            top: 80px;
-            background: #1e1e1e;
-            padding: 15px 0;
-            z-index: 900;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .brand-nav .nav-link {
-            color: #d4af37;
-            font-weight: 500;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-        }
-
-        .brand-nav .nav-link:hover {
-            background: #d4af37;
-            color: #fff;
-            border-radius: 5px;
-        }
-
-        /* Search Bar */
-        .search-bar {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .search-bar input {
-            width: 50%;
-            padding: 10px;
-            border-radius: 25px;
-            border: 2px solid #d4af37;
-            background: #2a2a2a;
-            color: #e0e0e0;
-            font-size: 1rem;
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            0% {
+                transform: translateY(0) scale(0.8);
+                opacity: 0.9;
+                bottom: 0; /* Start at bottom of header */
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateY(-50%) scale(1.2);
+            }
+            100% {
+                transform: translateY(-100%) scale(0.8);
+                opacity: 0;
+                bottom: 100%; /* Move to top of header */
+            }
         }
 
         /* Brand Section */
@@ -255,11 +222,18 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .luxury-header h1 { font-size: 2rem; }
-            .brand-section h2 { font-size: 2rem; }
-            .car-card img { height: 150px; }
-            .car-card-body h5 { font-size: 1.2rem; }
-            .search-bar input { width: 80%; }
+            .luxury-header h1 {
+                font-size: 2rem;
+            }
+            .brand-section h2 {
+                font-size: 2rem;
+            }
+            .car-card img {
+                height: 150px;
+            }
+            .car-card-body h5 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -296,30 +270,14 @@
         </div>
     </section>
 
-    <!-- Brand Navigation -->
-    <nav class="brand-nav">
-        <div class="container d-flex justify-content-center flex-wrap">
-            <a href="#mercedes" class="nav-link">Mercedes-Benz</a>
-            <a href="#bmw" class="nav-link">BMW</a>
-            <a href="#porsche" class="nav-link">Porsche</a>
-            <a href="#audi" class="nav-link">Audi</a>
-            <a href="#lamborghini" class="nav-link">Lamborghini</a>
-        </div>
-    </nav>
-
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" id="carSearch" placeholder="Search for a car...">
-    </div>
-
     <!-- Luxury Cars by Brand -->
     <div class="container">
         <!-- Brand: Mercedes-Benz -->
-        <section class="brand-section" id="mercedes">
+        <section class="brand-section">
             <h2>Mercedes-Benz</h2>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="S-Class">
+                    <div class="car-card">
                         <img src="./assets/pexels-photo-30840781.webp" alt="Mercedes S-Class">
                         <div class="car-card-body">
                             <h5>S-Class</h5>
@@ -329,7 +287,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="E-Class">
+                    <div class="car-card">
                         <img src="./assets/pexels-photo-733745.webp" alt="Mercedes E-Class">
                         <div class="car-card-body">
                             <h5>E-Class</h5>
@@ -339,7 +297,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="GLE">
+                    <div class="car-card">
                         <img src="./assets/sports-car-pkw-auto-vehicle-94272.webp" alt="Mercedes GLE">
                         <div class="car-card-body">
                             <h5>GLE</h5>
@@ -349,7 +307,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="AMG GT">
+                    <div class="car-card">
                         <img src="./assets/pexels-photo-27985144.webp" alt="Mercedes AMG GT">
                         <div class="car-card-body">
                             <h5>AMG GT</h5>
@@ -362,12 +320,12 @@
         </section>
 
         <!-- Brand: BMW -->
-        <section class="brand-section" id="bmw">
+        <section class="brand-section">
             <h2>BMW</h2>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="7 Series">
-                        <img src="./assets/BMW 7 SERIES(1).jpg" alt="BMW 7 Series">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+7+Series" alt="BMW 7 Series">
                         <div class="car-card-body">
                             <h5>7 Series</h5>
                             <p>$145/day</p>
@@ -376,8 +334,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="5 Series">
-                        <img src="./assets/BMW-5-series.webp" alt="BMW 5 Series">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+5+Series" alt="BMW 5 Series">
                         <div class="car-card-body">
                             <h5>5 Series</h5>
                             <p>$115/day</p>
@@ -386,8 +344,8 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="X7">
-                        <img src="./assets/BMW - X7(1).jpg" alt="BMW X7">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+X7" alt="BMW X7">
                         <div class="car-card-body">
                             <h5>X7</h5>
                             <p>$135/day</p>
@@ -396,152 +354,11 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="M8">
-                        <img src="./assets/BMW-M8(1).jpg" alt="BMW M8">
+                    <div class="car-card">
+                        <img src="https://via.placeholder.com/300x200?text=BMW+M8" alt="BMW M8">
                         <div class="car-card-body">
                             <h5>M8</h5>
                             <p>$190/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Brand: Porsche -->
-        <section class="brand-section" id="porsche">
-            <h2>Porsche</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="911 Turbo S">
-                        <img src="./assets/porsche-911-turbo-s.jpg" alt="Porsche 911 Turbo S">
-                        <div class="car-card-body">
-                            <h5>911 Turbo S</h5>
-                            <p>$250/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Cayenne">
-                        <img src="./assets/porsche-cayenne.jpg" alt="Porsche Cayenne">
-                        <div class="car-card-body">
-                            <h5>Cayenne</h5>
-                            <p>$160/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Panamera">
-                        <img src="./assets/porsche-panamera.jpg" alt="Porsche Panamera">
-                        <div class="car-card-body">
-                            <h5>Panamera</h5>
-                            <p>$180/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Taycan">
-                        <img src="./assets/porsche-taycan.jpg" alt="Porsche Taycan">
-                        <div class="car-card-body">
-                            <h5>Taycan</h5>
-                            <p>$220/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Brand: Audi -->
-        <section class="brand-section" id="audi">
-            <h2>Audi</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="A8">
-                        <img src="./assets/audi-a8.jpg" alt="Audi A8">
-                        <div class="car-card-body">
-                            <h5>A8</h5>
-                            <p>$140/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Q8">
-                        <img src="./assets/audi-q8.jpg" alt="Audi Q8">
-                        <div class="car-card-body">
-                            <h5>Q8</h5>
-                            <p>$150/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="RS7">
-                        <img src="./assets/audi-rs7.jpg" alt="Audi RS7">
-                        <div class="car-card-body">
-                            <h5>RS7</h5>
-                            <p>$210/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="e-tron GT">
-                        <img src="./assets/audi-etron-gt.jpg" alt="Audi e-tron GT">
-                        <div class="car-card-body">
-                            <h5>e-tron GT</h5>
-                            <p>$230/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Brand: Lamborghini -->
-        <section class="brand-section" id="lamborghini">
-            <h2>Lamborghini</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Aventador">
-                        <img src="./assets/lamborghini-aventador.jpg" alt="Lamborghini Aventador">
-                        <div class="car-card-body">
-                            <h5>Aventador</h5>
-                            <p>$300/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Huracan">
-                        <img src="./assets/lamborghini-huracan.jpg" alt="Lamborghini Huracan">
-                        <div class="car-card-body">
-                            <h5>Huracan</h5>
-                            <p>$280/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Urus">
-                        <img src="./assets/lamborghini-urus.jpg" alt="Lamborghini Urus">
-                        <div class="car-card-body">
-                            <h5>Urus</h5>
-                            <p>$260/day</p>
-                            <a href="#" class="btn-rent">Rent Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="car-card" data-name="Revuelto">
-                        <img src="./assets/lamborghini-revuelto.jpg" alt="Lamborghini Revuelto">
-                        <div class="car-card-body">
-                            <h5>Revuelto</h5>
-                            <p>$320/day</p>
                             <a href="#" class="btn-rent">Rent Now</a>
                         </div>
                     </div>
@@ -557,39 +374,32 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Enhanced Animation and Search Script -->
+    <!-- Enhanced Animation Script -->
     <script>
-        // Particle Animation
         function createParticle() {
             const particle = document.createElement('div');
             particle.classList.add('particle');
-            const size = Math.random() * 15 + 5;
+            
+            const size = Math.random() * 15 + 5; // Smaller, varied size for elegance
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.bottom = '0';
-            const duration = Math.random() * 6 + 4;
+            
+            particle.style.left = `${Math.random() * 100}%`; // Random horizontal position
+            particle.style.bottom = '0'; // Start at bottom of header
+            
+            // Randomize animation duration and delay for a natural flow
+            const duration = Math.random() * 6 + 4; // Between 4-10s
             particle.style.animationDuration = `${duration}s`;
-            particle.style.animationDelay = `${Math.random() * 2}s`;
+            particle.style.animationDelay = `${Math.random() * 2}s`; // Slight delay for stagger
+            
             document.getElementById('particles').appendChild(particle);
+            
+            // Remove particle after animation completes
             setTimeout(() => particle.remove(), duration * 1000);
         }
-        setInterval(createParticle, 300);
 
-        // Search Functionality
-        document.getElementById('carSearch').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const carCards = document.querySelectorAll('.car-card');
-            
-            carCards.forEach(card => {
-                const carName = card.getAttribute('data-name').toLowerCase();
-                if (carName.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
+        // Generate particles every 300ms for a smoother, more luxurious effect
+        setInterval(createParticle, 300);
     </script>
 </body>
 </html>
