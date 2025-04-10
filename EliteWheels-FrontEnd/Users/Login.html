@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteWheels - Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --dark-color: #222;
+            --light-color: #f8f9fa;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0%;
+            z-index: 1000;
+            background-color: white; 
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .navbar-nav .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            margin-right: 15px;
+        }
+        
+        .navbar .nav-link:hover {
+            color: #d4af37;
+        }
+        
+        .navbar .text-danger {
+            font-weight: bold;
+        }
+            
+        body {
+            padding-top: 80px; 
+        }
+            
+        /* Existing Styles */
+        .hero-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-btn:hover {
+            background-color: #c4a030;
+            color: white;
+        }
+        
+        .phone-login-container {
+            max-width: 400px;
+            margin: 80px auto; 
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/upscalemedia-transformed.png" alt="Logo" height="60" width="110"> 
+            </a>            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/ExploreCars.html">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Support.html">Support</a></li>
+                </ul>
+            </div>
+            <div class="navbar-nav">
+                <a href="#" class="nav-link"><i class="bi bi-person-circle fs-4"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section class="container my-5" id="login-section">
+        <div class="phone-login-container">
+            <h3 class="text-center mb-4" style="color: #d4af37;">Login to EliteWheels</h3>
+            <div id="phone-login-form">
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <div class="input-group">
+                        <span class="input-group-text">+91</span>
+                        <input type="tel" class="form-control" id="phoneNumber" placeholder="9876543210" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-text">We'll send a verification code to this number</div>
+                </div>
+                <button class="btn hero-btn w-100" id="sendCodeBtn">Send Verification Code</button>
+            </div>
+            
+            <div id="verification-form" style="display: none;">
+                <div class="mb-3">
+                    <label for="verificationCode" class="form-label">Verification Code</label>
+                    <input type="text" class="form-control" id="verificationCode" placeholder="Enter 6-digit code">
+                    <div class="form-text" id="otp-display" style="display: none;"></div>
+                </div>
+                <button class="btn hero-btn w-100" id="verifyCodeBtn">Verify & Login</button>
+                <p class="text-center mt-3">
+                    <a href="#" id="resendCodeBtn">Resend code</a> | 
+                    <a href="#" id="changePhoneBtn">Use different number</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Login.js"></script>
+</body>
+</html>
