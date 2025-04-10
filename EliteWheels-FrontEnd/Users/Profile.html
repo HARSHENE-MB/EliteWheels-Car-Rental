@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteWheels - User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/EliteWheels-FrontEnd/Users/css/Profile.css" rel="stylesheet">
+   
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/upscalemedia-transformed.png" alt="Logo" height="60" width="110"> 
+            </a>            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/ExploreCars.html">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Support.html">Support</a></li>
+                </ul>
+            </div>
+            <div class="navbar-nav">
+                <a href="#" class="nav-link"><i class="bi bi-person-circle fs-4"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Profile Section -->
+    <section class="container my-5" id="profile-section">
+        <div class="row">
+            <!-- Profile Sidebar -->
+            <div class="col-md-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <img src="./assets/user-avatar.png" alt="User Avatar" class="rounded-circle mb-3" width="100" height="100">
+                        <h4 class="card-title">Rahul Sharma</h4>
+                        <p class="text-muted">Member since April 2025</p>
+                        <div class="d-flex justify-content-center">
+                            <span class="badge bg-primary me-1">Gold Member</span>
+                            <span class="badge bg-success">Verified</span>
+                        </div>
+                        <button class="btn hero-btn mt-3">Edit Profile</button>
+                    </div>
+                </div>
+                <ul class="list-group mt-3" id="profile-sidebar">
+                    <li class="list-group-item sidebar-item active" data-target="profile-overview">Profile Overview</li>
+                    <li class="list-group-item sidebar-item" data-target="rental-history">Rental History</li>
+                    <li class="list-group-item sidebar-item" data-target="upcoming-reservations">Upcoming Reservations</li>
+                    <li class="list-group-item sidebar-item" data-target="documents">Documents</li>
+                    <li class="list-group-item sidebar-item" data-target="payment-methods">Payment Methods</li>
+                    <li class="list-group-item sidebar-item" data-target="preferences">Preferences</li>
+                    <li class="list-group-item sidebar-item" data-target="account-settings">Account Settings</li>
+                </ul>
+            </div>
+
+            <!-- Profile Content -->
+            <div class="col-md-9">
+                <!-- Profile Overview -->
+                <div id="profile-overview" class="profile-content-section active card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4" style="color: #d4af37;">Profile Overview</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Full Name:</strong> Rahul Sharma</p>
+                                <p><strong>Email:</strong> rahul.sharma@gmail.com <span class="verification-badge">Verified</span></p>
+                                <p><strong>Phone:</strong> +91 98765 43210 <span class="verification-badge">Verified</span></p>
+                                <p><strong>Emergency Contact:</strong> Priya Sharma, +91 87654 32109</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Address:</strong> Flat 304, Shanti Apartments, Sector 21, Gurgaon, Haryana</p>
+                                <p><strong>Driver's License:</strong> DL-HR2023456789 <span class="verification-badge">Verified</span></p>
+                                <p><strong>Membership Level:</strong> Gold (5% discount on rentals)</p>
+                                <p><strong>Reward Points:</strong> 450 points (= ₹450 in rental credit)</p>
+                            </div>
+                        </div>
+                        <div class="alert alert-info mt-3">
+                            <i class="bi bi-info-circle me-2"></i> Complete your profile to unlock special offers! <a href="#" class="alert-link">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rental History -->
+                <div id="rental-history" class="profile-content-section card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4" style="color: #d4af37;">Rental History</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Car</th>
+                                        <th>Rental Date</th>
+                                        <th>Return Date</th>
+                                        <th>Total Cost</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Maruti Swift</td>
+                                        <td>Mar 15, 2025</td>
+                                        <td>Mar 20, 2025</td>
+                                        <td>₹12,500</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-secondary">Receipt</button>
+                                            <button class="btn btn-sm btn-outline-primary">Review</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hyundai i20</td>
+                                        <td>Apr 1, 2025</td>
+                                        <td>Apr 5, 2025</td>
+                                        <td>₹9,000</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-secondary">Receipt</button>
+                                            <button class="btn btn-sm btn-outline-primary">Review</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tata Nexon EV</td>
+                                        <td>Apr 8, 2025</td>
+                                        <td>Apr 10, 2025</td>
+                                        <td>₹16,000</td>
+                                        <td><span class="badge bg-primary">In Progress</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger">Report Issue</button>
+                                            <button class="btn btn-sm btn-outline-warning">Extend</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn hero-btn mt-3">View All Rentals</button>
+                    </div>
+                </div>
+
+                <!-- Upcoming Reservations -->
+                <div id="upcoming-reservations" class="profile-content-section card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4" style="color: #d4af37;">Upcoming Reservations</h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Mahindra XUV700</h5>
+                                        <p class="card-text"><strong>Pickup:</strong> Apr 15, 2025, 10:00 AM</p>
+                                        <p class="card-text"><strong>Return:</strong> Apr 20, 2025, 10:00 AM</p>
+                                        <p class="card-text"><strong>Location:</strong> Connaught Place Branch</p>
+                                        <p class="card-text"><strong>Total:</strong> ₹22,500</p>
+                                        <div class="mt-3">
+                                            <button class="btn btn-sm btn-outline-primary">Modify</button>
+                                            <button class="btn btn-sm btn-outline-danger">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Toyota Fortuner</h5>
+                                        <p class="card-text"><strong>Pickup:</strong> May 1, 2025, 9:00 AM</p>
+                                        <p class="card-text"><strong>Return:</strong> May 5, 2025, 6:00 PM</p>
+                                        <p class="card-text"><strong>Location:</strong> IGI Airport Terminal</p>
+                                        <p class="card-text"><strong>Total:</strong> ₹19,000</p>
+                                        <div class="mt-3">
+                                            <button class="btn btn-sm btn-outline-primary">Modify</button>
+                                            <button class="btn btn-sm btn-outline-danger">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn hero-btn mt-3">Make New Reservation</button>
+                    </div>
+                </div>
+
+                <!-- Documents -->
+                <div id="documents" class="profile-content-section card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4" style="color: #d4af37;">Documents</h3>
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="card document-card">
+                                    <i class="bi bi-card-image mb-3"></i>
+                                    <h6>Driver's License</h6>
+                                    <span class="badge bg-success mb-2">Verified</span>
+                                    <button class="btn btn-sm btn-outline-primary">View</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card document-card">
+                                    <i class="bi bi-card-image mb-3"></i>
+                                    <h6>Aadhaar Card</h6>
+                                    <span class="badge bg-success mb-2">Verified</span>
+                                    <button class="btn btn-sm btn-outline-primary">View</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card document-card">
+                                    <i class="bi bi-card-image mb-3"></i>
+                                    <h6>PAN Card</h6>
+                                    <span class="badge bg-warning text-dark mb-2">Pending</span>
+                                    <button class="btn btn-sm btn-outline-primary">View</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn hero-btn">Upload New Document</button>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div id="payment-methods" class="profile-content-section card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4" style="color: #d4af37;">Payment Methods</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-credit-card me-2"></i>
+                                    HDFC Visa ending in 1234
+                                    <span class="badge bg-success ms-2">Default</span>
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-secondary btn-sm me-2">Edit</button>
+                                    <button class="btn btn-outline-danger btn-sm">Remove</button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-credit-card me-2"></i>
+                                    SBI MasterCard ending in 5678
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-secondary btn-sm me-2">Edit</button>
+                                    <button class="btn btn-outline-danger btn-sm">Remove</button>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-wallet2 me-2"></i>
+                                    UPI - rahul.sharma@okicici
+                                </div>
+                                <div>
+                                    <button class="btn btn-outline-secondary btn-sm me-2">Edit</button>
+                                    <button class="btn btn-outline-danger btn-sm">Remove</button>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="btn hero-btn mt-3">Add Payment Method</button>
+                    </div>
+                </div>
+
+                <!-- Preferences -->
+                <div id="preferences" class="profile-content-section card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4" style="color: #d4af37;">Preferences</h3>
+                        <div class="mb-4">
+                            <h5>Car Preferences</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Preferred Car Type</label>
+                                        <select class="form-select">
+                                            <option selected>Sedan</option>
+                                            <option>SUV</option>
+                                            <option>Luxury</option>
+                                            <option>Hatchback</option>
+                                            <option>Electric</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Transmission</label>
+                                        <select class="form-select">
+                                            <option selected>Automatic</option>
+                                            <option>Manual</option>
+                                            <option>No Preference</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Preferred Features</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gps" checked>
+                                            <label class="form-check-label" for="gps">GPS Navigation</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="bluetooth" checked>
+                                            <label class="form-check-label" for="bluetooth">Bluetooth</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="childSeat">
+                                            <label class="form-check-label" for="childSeat">Child Seat</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="wifi">
+                                            <label class="form-check-label" for="wifi">WiFi Hotspot</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="fastag" checked>
+                                            <label class="form-check-label" for="fastag">FASTag</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h5>Location Preferences</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Preferred Pickup Location</label>
+                                <select class="form-select">
+                                    <option selected>Connaught Place Branch</option>
+                                    <option>IGI Airport Terminal</option>
+                                    <option>Gurgaon Sector 29</option>
+                                    <option>Noida Sector 18</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="sameReturnLocation" checked>
+                                <label class="form-check-label" for="sameReturnLocation">
+                                    Same location for return
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h5>Notification Preferences</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                <label class="form-check-label" for="emailNotifications">
+                                    Email Notifications
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="smsNotifications" checked>
+                                <label class="form-check-label" for="smsNotifications">
+                                    SMS Notifications
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="whatsappNotifications" checked>
+                                <label class="form-check-label" for="whatsappNotifications">
+                                    WhatsApp Notifications
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="pushNotifications">
+                                <label class="form-check-label" for="pushNotifications">
+                                    Push Notifications
+                                </label>
+                            </div>
+                        </div>
+                        <button class="btn hero-btn">Update Preferences</button>
+                    </div>
+                </div>
+
+                <!-- Account Settings -->
+                <div id="account-settings" class="profile-content-section card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4" style="color: #d4af37;">Account Settings</h3>
+                        
+                        <div class="mb-4">
+                            <h5>Personal Information</h5>
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" value="Rahul Sharma">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" value="rahul.sharma@gmail.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" value="+91 98765 43210" readonly>
+                                <div class="form-text">Primary phone number cannot be changed as it's used for login</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="alternatePhone" class="form-label">Alternate Phone Number (Optional)</label>
+                                <input type="tel" class="form-control" id="alternatePhone" placeholder="Enter alternate phone number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="emergencyContact" class="form-label">Emergency Contact</label>
+                                <input type="text" class="form-control" id="emergencyContact" value="Priya Sharma, +91 87654 32109">
+                            </div>
+                        </div>
+                                                
+                        <div class="mb-4">
+                            <h5>Communication Settings</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="marketingEmails" checked>
+                                <label class="form-check-label" for="marketingEmails">
+                                    Receive promotional emails and special offers
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rentalReminders" checked>
+                                <label class="form-check-label" for="rentalReminders">
+                                    Receive rental reminders
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="feedbackRequests" checked>
+                                <label class="form-check-label" for="feedbackRequests">
+                                    Receive feedback requests after rentals
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn hero-btn">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About EliteWheels</h5>
+                    <p>EliteWheels provides premium car rental services across India with a focus on quality and customer satisfaction.</p>
+                </div>
+                <div class="col-md-4 footer-links">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Explore Cars</a></li>
+                        <li><a href="#">Offers</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 EliteWheels. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.profile-content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                const target = this.getAttribute('data-target');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
