@@ -88,83 +88,71 @@
             gap: 30px; /* Consistent spacing between cards */
         }
 
-        /* Cards */
         .category-card {
-            background: linear-gradient(135deg, #ffffff 0%, #e9e9e7 100%);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(212, 175, 55, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
+    background: linear-gradient(135deg, #ffffff 0%, #e9e9e7 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    overflow: hidden;
+}
 
-        .category-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            border-color: #d4af37;
-        }
+/* Remove card hover transform/scale effects */
+.category-card:hover {
+    border-color: #d4af37;
+}
 
-        .category-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
 
-        .category-card h2 {
-            color: #d4af37;
-            font-weight: 700;
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
+.category-card h2 {
+    color: #d4af37;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
 
-        .category-card p {
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
+.category-card p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
 
-        .category-card .btn-choose {
-            background: linear-gradient(135deg, #d4af37 0%, #8c6900 100%);
-            border: none;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 10px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
+/* BUTTON hover effect only */
+.category-card .btn-choose {
+    background: linear-gradient(135deg, #d4af37 0%, #8c6900 100%);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
 
-        .category-card .btn-choose:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
-            background: linear-gradient(135deg, #a67c00 0%, #d4af37 100%);
-            color: white;
-        }
+.category-card .btn-choose:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+    background: linear-gradient(135deg, #a67c00 0%, #d4af37 100%);
+    color: white;
+}
 
-        /* Card Overlay Effect */
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(212, 175, 55, 0.1);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+/* Remove card-wide overlay */
+.category-card::before {
+    content: none;
+}
 
-        .category-card:hover::before {
-            opacity: 1;
-        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -203,7 +191,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/ExploreCars.html">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/EliteWheels-FrontEnd/Users/carscards.html">Explore</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Offers</a></li>
                     <li class="nav-item"><a class="nav-link" href="Support.html">Support</a></li>
                 </ul>
@@ -225,14 +213,15 @@
                 <img src="./assets/Images/aff-sedan-Maruti Dzire-f.avif" alt="Affordable Car">
                 <h2>Affordable</h2>
                 <p>Rent reliable cars at budget-friendly prices for everyday travel.</p>
-                <a href="#" class="btn-choose">Choose Affordable</a>
+                <a href="./ExploreCars.html" class="btn-choose">Choose Affordable</a>
+
             </div>
             <!-- Luxury Card -->
             <div class="category-card">
                 <img src="/EliteWheels-FrontEnd/Users/assets/f9a6db2d-78dc-4e7a-8f43-c57a9e334292.jpg" alt="Luxury Car">
                 <h2>Luxury</h2>
                 <p>Experience premium comfort and style with our luxury fleet.</p>
-                <a href="/EliteWheels-FrontEnd/Users/LuxuryCars.html" class="btn-choose">Choose Luxury</a>
+                <a href="/EliteWheels-FrontEnd/Users/Luxury.html" class="btn-choose">Choose Luxury</a>
             </div>
         </div>
     </section>
