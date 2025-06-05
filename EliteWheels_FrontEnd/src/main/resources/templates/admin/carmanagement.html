@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management - EliteWheels Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/carmanagement.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <!-- Hamburger Menu for Mobile -->
+    <button class="hamburger" onclick="toggleSidebar()">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <p class="logo">Admin Panel</p>
+        <div class="section-header">Overview</div>
+        <ul>
+            <li><a th:href="@{/admin/dashboard}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a th:href="@{/admin/reporting}"><i class="fas fa-chart-line"></i> Reporting</a></li>
+        </ul>
+        <div class="section-header">Manage</div>
+        <ul>
+            <li><a th:href="@{/admin/bookings}"><i class="fas fa-calendar-alt"></i> Bookings</a></li>
+            
+            <li><a th:href="@{/admin/carmanagement}"><i class="fas fa-tools"></i> Car Management</a></li>
+           
+            <li><a th:href="@{/admin/users}"><i class="fas fa-users"></i> User Management</a></li>
+            <li><a th:href="@{/admin/support}"><i class="fas fa-headset"></i> Support Management</a></li>
+        </ul>
+        <div class="section-header">Settings</div>
+        <ul>
+            <li><a th:href="@{/admin/settings}"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- Top Buttons -->
+    <div class="top-buttons">
+        <button class="notification-btn" onclick="showNotifications()">
+            <i class="bi bi-bell"></i>
+        </button>
+        <button class="logout-btn" onclick="logout()">
+            <i class="bi bi-box-arrow-right"></i> Logout
+        </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <h1>Car Management</h1>
+            <div th:if="${success}" class="alert alert-success" th:text="${success}" th:remove="all"></div>
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}" th:remove="all"></div>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs mb-4">
+                <li class="nav-item">
+                    <a class="nav-link active" id="cars-tab" data-bs-toggle="tab" href="#cars">Manage Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="brands-tab" data-bs-toggle="tab" href="#brands">Manage Brands</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="categories-tab" data-bs-toggle="tab" href="#categories">Manage Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="types-tab" data-bs-toggle="tab" href="#types">Manage Types</a>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Cars Tab -->
+                <div class="tab-pane fade show active" id="cars">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>All Cars</h3>
+                            <button class="btn btn-primary" onclick="resetCarForm()" data-bs-toggle="modal" data-bs-target="#carModal">Add Car</button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="carsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Brand</th>
+                                        <th>Model</th>
+                                        <th>Vehicle No</th>
+                                        <th>Year</th>
+                                        <th>Rental Rate</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="carsTableBody">
+                                    <!-- Populated via JavaScript -->
+                                </tbody>
+                            </table>
+                            <!-- Pagination -->
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center" id="pagination">
+                                    <!-- Populated via JavaScript -->
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brands Tab -->
+                <div class="tab-pane fade" id="brands">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>All Brands</h3>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#brandModal">Add Brand</button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="brandsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="brandsTableBody">
+                                    <!-- Populated via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories Tab -->
+                <div class="tab-pane fade" id="categories">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>All Categories</h3>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoryModal">Add Category</button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="categoriesTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="categoriesTableBody">
+                                    <!-- Populated via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Types Tab -->
+                <div class="tab-pane fade" id="types">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>All Types</h3>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#typeModal">Add Type</button>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="typesTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="typesTableBody">
+                                    <!-- Populated via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Modal -->
+            <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="carModalLabel">Add Car</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="carForm">
+                                <input type="hidden" id="carId">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="brandId" class="form-label">Brand</label>
+                                        <select id="brandId" class="form-select" required>
+                                            <!-- Populated via JavaScript -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="model" class="form-label">Model</label>
+                                        <input type="text" id="model" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="vehicleNo" class="form-label">Vehicle Number</label>
+                                        <input type="text" id="vehicleNo" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="year" class="form-label">Year</label>
+                                        <input type="number" id="year" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="typeId" class="form-label">Type</label>
+                                        <select id="typeId" class="form-select" required>
+                                            <!-- Populated via JavaScript -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="categoryId" class="form-label">Category</label>
+                                        <select id="categoryId" class="form-select" required>
+                                            <!-- Populated via JavaScript -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="rentalRate" class="form-label">Rental Rate (₹/hour)</label>
+                                        <input type="number" id="rentalRate" class="form-control" step="0.01" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="status" class="form-label">Status</label>
+                                        <select id="status" class="form-select" required>
+                                            <option value="available">Available</option>
+                                            <option value="unavailable">Unavailable</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="seatCount" class="form-label">Seat Count</label>
+                                        <input type="number" id="seatCount" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="mileage" class="form-label">Mileage (km)</label>
+                                        <input type="number" id="mileage" class="form-control">
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="features" class="form-label">Features</label>
+                                        <textarea id="features" class="form-control"></textarea>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="imageUrl" class="form-label">Image URL</label>
+                                        <input type="text" id="imageUrl" class="form-control">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Car</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Brand Modal -->
+            <div class="modal fade" id="brandModal" tabindex="-1" aria-labelledby="brandModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="brandModalLabel">Add/Edit Brand</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="brandForm">
+                                <input type="hidden" id="brandId">
+                                <div class="mb-3">
+                                    <label for="brandName" class="form-label">Brand Name</label>
+                                    <input type="text" id="brandName" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Brand</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Modal -->
+            <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="categoryModalLabel">Add/Edit Category</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="categoryForm">
+                                <input type="hidden" id="categoryId">
+                                <div class="mb-3">
+                                    <label for="categoryName" class="form-label">Category Name</label>
+                                    <input type="text" id="categoryName" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Category</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Type Modal -->
+            <div class="modal fade" id="typeModal" tabindex="-1" aria-labelledby="typeModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="typeModalLabel">Add/Edit Type</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="typeForm">
+                                <input type="hidden" id="typeId">
+                                <div class="mb-3">
+                                    <label for="typeName" class="form-label">Type Name</label>
+                                    <input type="text" id="typeName" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Type</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Detail Modal -->
+            <div class="modal fade" id="carDetailModal" tabindex="-1" aria-labelledby="carDetailModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content rounded-4">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="carDetailModalLabel">Car Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="carDetailBody">
+                            <!-- Car details will be inserted here -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/carmanagement.js}"></script>
+</body>
+</html>

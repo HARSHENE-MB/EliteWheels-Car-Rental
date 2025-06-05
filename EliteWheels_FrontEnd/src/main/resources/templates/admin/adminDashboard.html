@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/admindashboard.css}" href="/css/admindashboard.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <p class="logo">Admin Panel</p>
+    
+    <!-- Overview Section -->
+    <div class="section-header">Overview</div>
+    <ul>
+        <li><a href="/admin/dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="/admin/reporting"><i class="fas fa-chart-line"></i> Reporting</a></li>
+    </ul>
+
+    <!-- Manage Section -->
+    <div class="section-header">Manage</div>
+    <ul>
+       
+        <li><a href="/admin/bookings"><i class="fas fa-calendar-alt"></i> Bookings</a></li>
+        
+        <li><a href="#car-management"><i class="fas fa-tools"></i> Car Management</a></li>
+        
+        <li><a href="/admin/users"><i class="fas fa-users"></i> User Management</a></li>
+        <li><a href="/admin/support"><i class="fas fa-headset"></i> Support Management</a></li>
+    </ul>
+
+    <!-- Settings Section -->
+    <div class="section-header">Settings</div>
+    <ul>
+        <li><a href="/admin/profile"><i class="fas fa-cog"></i> Settings</a></li>
+    </ul>
+</div>
+
+<!-- Top Buttons (Notification + Logout) -->
+<div class="top-buttons">
+    <a href="#notifications" class="notification-btn">
+        <i class="fas fa-bell"></i>
+    </a>
+    <form th:action="@{/perform_logout}" method="post" style="display:inline;">
+        <button type="submit" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+    </form>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <h2>Admin Dashboard</h2>
+
+    <!-- Dashboard Cards -->
+    <div class="dashboard-cards">
+        <div class="card">
+            <i class="fas fa-car"></i>
+            <h4>Total Cars</h4>
+            <p id="totalCars">Loading...</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-users"></i>
+            <h4>Total Users</h4>
+            <p id="totalUsers">Loading...</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-calendar-check"></i>
+            <h4>Total Bookings</h4>
+            <p id="totalBookings">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-wrapper">
+        <!-- Pie Chart -->
+        <div class="chart-container">
+            <h5>Booking Status</h5>
+            <canvas id="bookingsChart"></canvas>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="chart-container">
+            <h5>Bookings per Car Type</h5>
+            <canvas id="carTypeChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script th:src="@{/js/admindashboard.js}" src="/js/admindashboard.js"></script>
+<script th:inline="javascript">
+    const backendUrl = /*[[${@environment.getProperty('backend.api.url')}]]*/ 'http://localhost:8081';
+    document.addEventListener('DOMContentLoaded', fetchDashboardData);
+
+    async function fetchDashboardData() {
+        try {
+            console.log(`[${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}] Fetching dashboard data`);
+            const response = await fetchWithAuth(`${backendUrl}/api/dashboard`, {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+            });
+            if (!response.ok) throw new Error(`Failed to fetch dashboard data: ${response.status} ${response.statusText}`);
+
+            const data = await response.json();
+            console.log('Dashboard data received:', data);
+
+            // Update Dashboard Cards
+            document.getElementById('totalCars').textContent = data.totalCars;
+            document.getElementById('totalUsers').textContent = data.totalUsers;
+            document.getElementById('totalBookings').textContent = data.totalBookings;
+
+            // Prepare Booking Status Chart
+            const bookingStatusCounts = data.bookingStatusCounts;
+            const bookingStatusLabels = Object.keys(bookingStatusCounts);
+            const bookingStatusData = Object.values(bookingStatusCounts);
+            new Chart(document.getElementById('bookingsChart'), {
+                type: 'pie',
+                data: {
+                    labels: bookingStatusLabels,
+                    datasets: [{
+                        data: bookingStatusData,
+                        backgroundColor: ['#d94e3c', '#2d8a4e', '#3380ff', '#ff9800']
+                    }]
+                }
+            });
+
+            // Prepare Bookings per Car Type Chart
+            const bookingsPerCarType = data.bookingsPerCarType;
+            const carTypeLabels = Object.keys(bookingsPerCarType);
+            const carTypeData = Object.values(bookingsPerCarType);
+            new Chart(document.getElementById('carTypeChart'), {
+                type: 'bar',
+                data: {
+                    labels: carTypeLabels,
+                    datasets: [{
+                        data: carTypeData,
+                        backgroundColor: ['#d94e3c', '#2d8a4e', '#3380ff', '#ffb533']
+                    }]
+                }
+            });
+        } catch (error) {
+            console.error(`[${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}] Error fetching dashboard data: ${error.message}`);
+            alert('Failed to load dashboard data. Please try again.');
+        }
+    }
+
+    async function fetchWithAuth(url, options) {
+        const username = 'admin';
+        const password = 'admin123';
+        const headers = new Headers(options.headers || {});
+        headers.set('Authorization', 'Basic ' + btoa(`${username}:${password}`));
+        return fetch(url, { ...options, headers });
+    }
+</script>
+</body>
+</html>

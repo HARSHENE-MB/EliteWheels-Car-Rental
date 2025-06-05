@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/offers.css}">
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/assets/upscalemedia-transformed.png}" alt="Logo" height="60" width="110"> 
+        </a>            
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/index}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/explore}">Explore</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/offers}">Offers</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/support}">Support</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-nav" id="profileWrapper">
+		    <div class="nav-item dropdown">
+		        <a href="#" class="nav-link dropdown-toggle" id="profileIcon" data-bs-toggle="dropdown">
+		            <i class="bi bi-person-circle fs-4"></i>
+		            <span id="userNameDisplay" class="ms-2 d-none"></span>
+		        </a>
+		
+		        <div class="dropdown-menu dropdown-menu-end" id="profileDropdownMenu">
+				    <!-- Dynamic content inserted by JS -->
+				</div>
+
+		    </div>
+		</div>
+    </div>
+</nav>
+
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+    <div class="container text-center">
+        <h1 th:text="'Unlock Exclusive Offers'"></h1>
+        <p th:text="'Drive away with the best deals tailored just for you!'"></p>
+    </div>
+</section>
+
+
+
+<section class="container my-5" id="offers-section">
+        <h2 class="section-title">Current Offers</h2>
+        <div class="row">
+        
+        <div class="col-md-4 mb-4">
+		    <div class="offer-card">
+		        <!-- <img src="./assets/offer-summer.jpg" alt="Summer Road Trip"> -->
+		        <div class="offer-content">
+		            <h3 th:text="'Summer Road Trip Blast'"></h3>
+		            <p th:text="'Book an SUV or Sedan for your summer adventure and enjoy 25% off + free toll pass.'"></p>
+		            <p><strong>Price:</strong> <span th:text="'₹1,799/day'"></span></p>
+		            <p><strong>Valid:</strong> <span th:text="'Until May 31, 2025'"></span></p>
+		            <p><strong>Code:</strong> <span th:text="'SUMMER25'"></span></p>
+		            <button class="btn offer-btn" data-offer="Summer Road Trip">Claim Offer</button>
+		        </div>
+		    </div>
+		</div>
+		<div class="col-md-4 mb-4">
+		    <div class="offer-card">
+		        <!-- <img src="./assets/offer-festival.jpg" alt="Festival Special"> -->
+		        <div class="offer-content">
+		            <h3 th:text="'Festival Special Deal'"></h3>
+		            <p th:text="'Celebrate Holi, Diwali, or Eid with 30% off luxury cars for family trips.'"></p>
+		            <p><strong>Price:</strong> <span th:text="'₹3,499/day'"></span></p>
+		            <p><strong>Valid:</strong> <span th:text="'Until Nov 15, 2025'"></span></p>
+		            <p><strong>Code:</strong> <span th:text="'FESTIVE30'"></span></p>
+		            <button class="btn offer-btn" data-offer="Festival Special">Claim Offer</button>
+		        </div>
+		    </div>
+		</div>
+		<div class="col-md-4 mb-4">
+		    <div class="offer-card">
+		        <!-- <img src="./assets/offer-city.jpg" alt="City Explorer"> -->
+		        <div class="offer-content">
+		            <h3 th:text="'City Explorer Package'"></h3>
+		            <p th:text="'Rent a compact car for city rides in metros like Delhi or Bangalore at a flat rate.'"></p>
+		            <p><strong>Price:</strong> <span th:text="'₹999/day'"></span></p>
+		            <p><strong>Valid:</strong> <span th:text="'Ongoing'"></span></p>
+		            <p><strong>Code:</strong> <span th:text="'CITY999'"></span></p>
+		            <button class="btn offer-btn" data-offer="City Explorer">Claim Offer</button>
+		        </div>
+		    </div>
+		</div>
+        </div>
+</section>
+
+<section class="container my-5" id="testimonials-section">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="row">
+        <div class="col-md-4 mb-4">
+		    <div class="testimonial-card">
+		        <div class="testimonial-header">
+		            <img th:src="@{https://randomuser.me/api/portraits/women/50.jpg}" class="user-pic" width="50" height="50" alt="Client">
+		            <div>
+		                <h5 th:text="'Priya K.'"></h5>
+		                <p class="text-muted" th:text="'Mumbai'"></p>
+		            </div>
+		        </div>
+		        <p th:text="'The Summer Road Trip deal saved me ₹2,000 on my Goa trip! The free toll pass was a bonus.'"></p>
+		        <div class="rating" th:text="'★★★★★'"></div>
+		    </div>
+		</div>
+		<div class="col-md-4 mb-4">
+		    <div class="testimonial-card">
+		        <div class="testimonial-header">
+		            <img th:src="@{https://randomuser.me/api/portraits/men/75.jpg}" class="user-pic" width="50" height="50" alt="Client">
+		            <div>
+		                <h5 th:text="'Arjun S.'"></h5>
+		                <p class="text-muted" th:text="'Delhi'"></p>
+		            </div>
+		        </div>
+		        <p th:text="'Used the Festival Special for Diwali. The luxury car made our family celebration extra special!'"></p>
+		        <div class="rating" th:text="'★★★★☆'"></div>
+		    </div>
+		</div>
+		<div class="col-md-4 mb-4">
+		    <div class="testimonial-card">
+		        <div class="testimonial-header">
+		            <img th:src="@{https://randomuser.me/api/portraits/men/22.jpg}" class="user-pic" width="50" height="50" alt="Client">
+		            <div>
+		                <h5 th:text="'Neha R.'"></h5>
+		                <p class="text-muted" th:text="'Bangalore'"></p>
+		            </div>
+		        </div>
+		        <p th:text="'City Explorer at ₹999/day is unbeatable. Perfect for my daily commute.'"></p>
+		        <div class="rating" th:text="'★★★★★'"></div>
+		    </div>
+		</div>
+        </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5 th:text="'About EliteWheels'"></h5>
+                <p th:text="'EliteWheels offers premium car rentals across India, ensuring quality and satisfaction.'"></p>
+            </div>
+            <div class="col-md-4 footer-links">
+                <h5 th:text="'Quick Links'"></h5>
+                <ul>
+                    <li><a href="/EliteWheels-FrontEnd/Users/index.html" th:text="'Home'"></a></li>
+                    <li><a href="/EliteWheels-FrontEnd/Users/ExploreCars.html" th:text="'Explore'"></a></li>
+                    <li><a href="#" th:text="'Offers'"></a></li>
+                    <li><a href="./Support.html" th:text="'Support'"></a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 th:text="'Follow Us'"></h5>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p th:text="'© 2025 EliteWheels. All rights reserved.'"></p>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/offers.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteWheels - Luxury Car Rentals</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/assets/upscalemedia-transformed.png}" alt="Logo" height="60" width="110"> 
+        </a>            
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/index}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/explore}">Explore</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/offers}">Offers</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/support}">Support</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-nav" id="profileWrapper">
+		    <div class="nav-item dropdown">
+		        <a href="#" class="nav-link dropdown-toggle" id="profileIcon" data-bs-toggle="dropdown">
+		            <i class="bi bi-person-circle fs-4"></i>
+		            <span id="userNameDisplay" class="ms-2 d-none"></span>
+		        </a>
+		
+		        <div class="dropdown-menu dropdown-menu-end" id="profileDropdownMenu">
+				    <!-- Dynamic content inserted by JS -->
+				</div>
+
+		    </div>
+		</div>
+    </div>
+</nav>
+
+
+    <div class="container">
+    <!-- Hero Offers Section -->
+    <div class="hero-offers text-center mb-4">
+        <p class="mb-0">Special Offer: <strong>20% Off First Booking!</strong> Use Code: ELITE20</p>
+    </div>
+
+    <!-- Luxury Car Carousel -->
+<div id="luxuryCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+        <th:block th:each="image, iterStat : ${carImages}">
+            <button type="button" data-bs-target="#luxuryCarousel" 
+                    th:data-bs-slide-to="${iterStat.index}" 
+                    th:classappend="${iterStat.index == 0} ? 'active'" 
+                    th:aria-current="${iterStat.index == 0} ? 'true'" 
+                    th:aria-label="'Slide ' + ${iterStat.index + 1}">
+            </button>
+        </th:block>
+    </div>
+
+    <div class="carousel-inner">
+        <th:block th:each="image, iterStat : ${carImages}">
+            <div class="carousel-item" th:classappend="${iterStat.index == 0} ? 'active'">
+                <img th:src="${image}" class="d-block w-100" style="max-height: 500px; object-fit: cover;" alt="Luxury Car">
+            </div>
+        </th:block>
+    </div>
+</div>
+
+
+<!-- <div class="advanced-search-section">
+    <form th:action="@{/search}" method="get" class="search-wrapper">
+        <div class="search-input-group" style="position: relative;">
+            <label for="pickupLocation">From</label>
+            <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Pickup Location" class="form-control" required>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+        </div>
+
+        <div class="search-input-group">
+            <label for="dropoffLocation">To</label>
+            <input type="text" id="dropoffLocation" name="dropoffLocation" placeholder="Drop-off Location" class="form-control" required>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+        </div>
+
+        <div class="search-input-group">
+            <label for="pickupDate">Date</label>
+            <input type="date" id="pickupDate" name="pickupDate" class="form-control" required>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+        </div>
+
+        <div class="search-input-group">
+            <label for="carType">Car Type</label>
+            <select id="carType" name="carType" class="form-control" required>
+                <option value="">Select Car Type</option>
+                <option th:each="type : ${carTypes}" th:value="${type}" th:text="${type}"></option>
+            </select>
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5C2 7 4 5 6.5 5h11C20 5 22 7 22 9.5V17zM8 5l1.5-3h5L16 5"></path>
+                <line x1="2" y1="13" x2="22" y2="13"></line>
+            </svg>
+        </div>
+
+        <button type="submit" class="search-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Find a Car
+        </button>
+    </form>
+</div>
+</div>  --> <br>
+
+
+
+<!-- Popular Cars Section -->
+<div class="container popular-cars">
+    <h2>Our Premium Collection</h2>
+    <div class="row">
+        <div class="col-lg-4 col-md-6">
+            <div class="card car-card">
+                <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Ford Mustang">
+                <div class="card-body">
+                    <h5 class="card-title">Ford Mustang GT</h5>
+                    <div class="d-flex justify-content-between mb-3" style="color: white;">
+                        <span><i class="bi bi-speedometer2 me-1"></i> 5.0L V8</span>
+                        <span><i class="bi bi-people me-1"></i> 4 Seats</span>
+                        <span><i class="bi bi-gear me-1"></i> Automatic</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-text mb-0">Rs.15000<small>/day</small></h4>
+                        <a href="#" class="btn btn-outline-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="card car-card">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Porsche 911">
+                <div class="card-body">
+                    <h5 class="card-title">Porsche 911 Carrera</h5>
+                    <div class="d-flex justify-content-between mb-3" style="color: white;">
+                        <span><i class="bi bi-speedometer2 me-1"></i> 3.0L Turbo</span>
+                        <span><i class="bi bi-people me-1"></i> 2 Seats</span>
+                        <span><i class="bi bi-gear me-1"></i> PDK</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-text mb-0">Rs.20000<small>/day</small></h4>
+                        <a href="#" class="btn btn-outline-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="card car-card">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Land Rover">
+                <div class="card-body">
+                    <h5 class="card-title">Land Rover Defender</h5>
+                    <div class="d-flex justify-content-between mb-3" style="color: white;">
+                        <span><i class="bi bi-speedometer2 me-1"></i> 3.0L Diesel</span>
+                        <span><i class="bi bi-people me-1"></i> 7 Seats</span>
+                        <span><i class="bi bi-gear me-1"></i> Automatic</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="card-text mb-0">Rs.30000<small>/day</small></h4>
+                        <a href="#" class="btn btn-outline-primary">Rent Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-outline-primary">View All Vehicles</a>
+    </div>
+</div>
+
+
+
+<!-- Offers Carousel -->
+<div id="offersCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Summer Special</h5>
+                    <p class="card-text">Rent a luxury car and get 30% off on weekly bookings!</p>
+                    <a href="#" class="btn btn-success">View Offer</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Weekend Getaway</h5>
+                    <p class="card-text">Weekend rentals at unbeatable prices!</p>
+                    <a href="#" class="btn btn-success">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#offersCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#offersCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+
+
+<!-- Rental Process Section -->
+<div class="rental-process">
+    <div class="process-step">
+        <div class="process-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h3>PICK YOUR TIME & LOCATION</h3>
+        <p>Select the perfect pickup time and location for your luxury car rental.</p>
+    </div>
+
+    <div class="process-step">
+        <div class="process-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 
+                         3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 
+                         3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 
+                         3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 
+                         3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 
+                         3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+        </div>
+        <h3>SCHEDULE YOUR PICKED CAR</h3>
+        <p>Confirm your luxury car selection and finalize your booking details.</p>
+    </div>
+
+    <div class="process-step">
+        <div class="process-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017
+                         c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405
+                         -.905.905 0 .714-.211 1.412-.608 2.006L7 11H4a2 2 0 00-2 2v2a2 2 0 
+                         002 2h2.5l4 4h4.5a2 2 0 002-2v-4.5" />
+            </svg>
+            <div class="check-icon">✓</div>
+        </div>
+        <h3>RELY ON US!</h3>
+        <p>We'll ensure a smooth and hassle-free luxury car rental experience.</p>
+    </div>
+</div>
+
+
+
+
+
+<!-- Testimonials -->
+<section class="testimonials py-5">
+    <div class="container overflow-hidden">
+        <h2 class="section-title text-center mb-5">What Our Clients Say</h2>
+        <div class="testimonial-slider-wrapper">
+            <div class="testimonial-slider d-flex">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The service was exceptional from start to finish. The car was in perfect condition and the pickup process was seamless."</p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <div class="d-flex align-items-center">
+                        <img th:src="@{https://randomuser.me/api/portraits/men/32.jpg}" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">Michael Johnson</h6>
+                            <small class="testimonial-role">Business Executive</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've rented from many companies, but EliteWheels stands out for their professionalism and premium vehicle selection."</p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <div class="d-flex align-items-center">
+                        <img th:src="@{https://randomuser.me/api/portraits/women/44.jpg}" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">Sarah Williams</h6>
+                            <small class="testimonial-role">Travel Blogger</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The Porsche 911 I rented was flawless. The entire experience was worth every penny. Will definitely rent again!"</p>
+                    <div class="rating">⭐⭐⭐⭐</div>
+                    <div class="d-flex align-items-center">
+                        <img th:src="@{https://randomuser.me/api/portraits/men/75.jpg}" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">David Chen</h6>
+                            <small class="testimonial-role">Entrepreneur</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Fantastic customer support and a smooth rental experience. Highly recommended!"</p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <div class="d-flex align-items-center">
+                        <img th:src="@{https://randomuser.me/api/portraits/women/50.jpg}" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">Emma Brown</h6>
+                            <small class="testimonial-role">Marketing Manager</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Best car rental experience I've had. The staff was friendly, and the process was effortless."</p>
+                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                    <div class="d-flex align-items-center">
+                        <img th:src="@{https://randomuser.me/api/portraits/men/22.jpg}" class="rounded-circle me-3" width="50" height="50" alt="Client">
+                        <div>
+                            <h6 class="testimonial-author mb-0">John Smith</h6>
+                            <small class="testimonial-role">Software Engineer</small>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</div>
+
+
+
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>EliteWheels</h5>
+                <p>Premium car rental service offering luxury vehicles for business and leisure travel across major cities worldwide.</p>
+                <div class="social-icons mt-4">
+                    <a th:href="@{#}"><i class="bi bi-facebook"></i></a>
+                    <a th:href="@{#}"><i class="bi bi-twitter"></i></a>
+                    <a th:href="@{#}"><i class="bi bi-instagram"></i></a>
+                    <a th:href="@{#}"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/about}">About Us</a></li>
+                    <li><a th:href="@{/fleet}">Our Fleet</a></li>
+                    <li><a th:href="@{/services}">Services</a></li>
+                    <li><a th:href="@{/contact}">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Services</h5>
+                <ul>
+                    <li><a th:href="@{/luxury-rental}">Luxury Car Rental</a></li>
+                    <li><a th:href="@{/airport-transfers}">Airport Transfers</a></li>
+                    <li><a th:href="@{/corporate-rentals}">Corporate Rentals</a></li>
+                    <li><a th:href="@{/leasing}">Long Term Leasing</a></li>
+                    <li><a th:href="@{/chauffeur-services}">Chauffeur Services</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5>Contact Us</h5>
+                <ul>
+                    <li><i class="bi bi-geo-alt me-2"></i> 123 Premium Ave, Luxury City</li>
+                    <li><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
+                    <li><i class="bi bi-envelope me-2"></i> <a th:href="@{mailto:info@elitewheels.com}">info@elitewheels.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p class="mb-0">&copy; 2025 EliteWheels. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/script.js"></script>
+
+</body>
+</html>

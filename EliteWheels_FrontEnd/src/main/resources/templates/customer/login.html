@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+ 	<link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/assets/upscalemedia-transformed.png}" alt="Logo" height="60" width="110"> 
+        </a>            
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/index}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/explore}">Explore</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/offers}">Offers</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/Support}">Support</a></li>
+            </ul>
+        </div>
+        <div class="navbar-nav">
+            <a th:href="@{/profile}" class="nav-link"><i class="bi bi-person-circle fs-4"></i></a>
+        </div>
+    </div>
+</nav>
+
+<!-- Login Section -->
+<section class="container my-5" id="login-section">
+    <div class="phone-login-container">
+        <h3 class="text-center mb-4" style="color: #d4af37;">Login to EliteWheels</h3>
+        <div id="phone-login-form">
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <div class="input-group">
+                    <span class="input-group-text">+91</span>
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="9876543210" pattern="[0-9]{10}" required
+                        th:value="${phoneNumber}">
+                </div>
+                <div class="form-text">We'll send a verification code to this number</div>
+            </div>
+            <button class="btn hero-btn w-100" id="sendCodeBtn" type="button">Send Verification Code</button>
+            
+            <!-- Registration Link -->
+            <p class="mt-3 text-center">
+                New to EliteWheels?
+                <a href="/register" class="text-primary" style="text-decoration: underline;">Create an account</a>
+            </p>
+        </div>
+  
+        
+        <div id="verification-form" style="display: none;">
+            <div class="mb-3">
+                <label for="verificationCode" class="form-label">Verification Code</label>
+                <input type="text" class="form-control" id="verificationCode" placeholder="Enter 6-digit code" required
+                    th:value="${verificationCode}">
+                <div class="form-text" id="otp-display" style="display: none;" th:text="${otpMessage}"></div>
+            </div>
+            <button class="btn hero-btn w-100" id="verifyCodeBtn" type="button">Verify & Login</button>
+            <p class="text-center mt-3">
+                <a href="#" id="resendCodeBtn">Resend code</a> | 
+                <a href="#" id="changePhoneBtn" th:onclick="|window.location.href='@{/changePhone}'|">Use different number</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/login.js"></script>
+
+
+</body>
+</html>

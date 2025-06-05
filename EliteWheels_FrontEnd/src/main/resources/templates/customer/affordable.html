@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EliteWheels - Affordable Cars</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+ 	<link rel="stylesheet" th:href="@{/css/affordable.css}">
+</head> 
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/assets/upscalemedia-transformed.png}" alt="Logo" height="60" width="110"> 
+        </a>            
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/index}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/explore}">Explore</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/offers}">Offers</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/support}">Support</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-nav" id="profileWrapper">
+		    <div class="nav-item dropdown">
+		        <a href="#" class="nav-link dropdown-toggle" id="profileIcon" data-bs-toggle="dropdown">
+		            <i class="bi bi-person-circle fs-4"></i>
+		            <span id="userNameDisplay" class="ms-2 d-none"></span>
+		        </a>
+		
+		        <div class="dropdown-menu dropdown-menu-end" id="profileDropdownMenu">
+				    <!-- Dynamic content inserted by JS -->
+				</div>
+
+		    </div>
+		</div>
+    </div>
+</nav>
+
+<div class="hero-section">
+    <h1>Drive Your Dream,</h1>
+    <h1>Anytime, Anywhere</h1>
+    <p>
+        Choose the perfect ride for your trip and hit the road with ease.
+    </p>
+    <a th:href="@{#carSection}" class="btn btn-primary btn-lg">Rent Now</a>
+    <div class="headlight-sparkle"></div>
+</div>
+
+
+<div class="container-fluid">
+        <div class="row">
+        
+        <!-- Filters Section -->
+<div class="col-md-3 p-4 mt-4 filter-section">
+    <h4>Car Selection</h4>
+    <hr>
+
+    <!-- Brand Selection -->
+    <div class="mb-3">
+        <label class="form-label">Brand</label>
+        <div class="brand-images d-flex justify-content-around flex-wrap">
+            <img th:src="@{/assets/toyota logo.jpg}" alt="Toyota" data-brand="Toyota">
+            <img th:src="@{/assets/audi logo.png}" alt="Audi" data-brand="Audi">
+            <img th:src="@{/assets/Tata logo.png}" alt="Tata" data-brand="Tata">
+            <img th:src="@{/assets/renault-logo.png}" alt="Renault" data-brand="Renault">
+            <img th:src="@{/assets/hyundai-logo.jpeg}" alt="Hyundai" data-brand="Hyundai">
+            <img th:src="@{/assets/range r logo.png}" alt="Range-Rover" data-brand="Range-Rover">
+            <img th:src="@{/assets/honda logo.jpg}" alt="Honda" data-brand="Honda">
+            <img th:src="@{/assets/ford logo.png}" alt="Ford" data-brand="Ford">
+            <img th:src="@{/assets/suzuki logo.png}" alt="Suzuki" data-brand="Maruti-Suzuki">
+            <img th:src="@{/assets/nissan logo.jpg}" alt="Nissan" data-brand="Nissan">
+        </div>
+    </div>
+
+    <!-- Seats Selection -->
+    <div class="mb-3">
+        <label class="form-label">Seats</label>
+        <div class="radio-inputs">
+        	<label class="radio">
+                <input type="radio" name="seats" value="all" checked>
+                <span class="name"><i class="fas fa-users me-1"></i> All</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="seats" value="4">
+                <span class="name"><i class="fas fa-car me-1"></i> 4</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="seats" value="5">
+                <span class="name"><i class="fa-solid fa-car-side me-1"></i> 5</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="seats" value="6">
+                <span class="name"><i class="fa-solid fa-van-shuttle me-1"></i> 6</span>
+            </label> 
+            <label class="radio">
+                <input type="radio" name="seats" value="7">
+                <span class="name"><i class="fas fa-users me-1"></i> 7</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Rental Type Selection -->
+    <div class="mb-3">
+        <label class="form-label">Rental Type</label>
+        <div class="radio-inputs">
+            <label class="radio">
+                <input type="radio" name="rentalType" value="hourly" checked>
+                <span class="name"><i class="fa-solid fa-clock me-1"></i> Hourly</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="rentalType" value="daily">
+                <span class="name"><i class="fa-solid fa-calendar-days me-1"></i> Daily</span>
+            </label>
+            <label class="radio">
+                <input type="radio" name="rentalType" value="weekly">
+                <span class="name"><i class="fa-solid fa-clock me-1"></i> Weekly</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Price Range Filter -->
+    <div class="mb-3">
+        <label class="form-label">Price Range</label>
+        <input type="range" class="form-range" id="priceRangeFilter" 
+               min="50" max="500" step="50" value="100000">
+        <small id="priceDisplay">Max Price: ₹100K</small>
+    </div>
+
+    <!-- Clear Button -->
+    <button id="applyFilters" class="btn btn-primary w-100">
+        Clear
+    </button>
+</div>
+
+
+
+        <!-- Cars Display Section -->
+        <div class="col-md-9 p-4" id="carSection">
+			<div class="radio-inputs" id="carTabs">
+			    <label class="radio">
+			        <input type="radio" name="radio" data-category="all" checked onclick="filterCars('all')">
+			        <span class="name">All Cars</span>
+			    </label>
+			    <label class="radio" th:each="type : ${carTypes}">
+			        <input type="radio" name="radio" th:attr="data-category=${type.typeName}" 
+			               th:onclick="'filterCars(\\'' + ${type.typeName} + '\\')'">
+			        <span class="name" th:text="${type.typeName}"></span>
+			    </label>
+			</div>
+
+
+    <!-- Cars List -->
+		    <div class="row mt-4" id="carsContainer">
+		    
+		</div>
+	</div>
+	</div>
+        
+</div>
+
+
+<div class="modal fade" id="carDetailModal" tabindex="-1" aria-labelledby="carDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title" id="carDetailModalLabel">Car Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="carDetailBody">
+        <!-- Car details will be inserted here -->
+      </div>
+      <div class="modal-footer">
+		  <button id="rentNowBtn" class="btn btn-primary w-100">Rent Now</button>
+		</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/affordable.js"></script>
+
+</body>
+</html>

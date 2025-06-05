@@ -1,0 +1,522 @@
+:root {
+            --primary: #000000;
+            --secondary: #d4af37;
+            --accent: #d4af37;
+            --light: #f4f4f4;
+            --dark: #000000;
+            --error: #e74c3c;
+            --success: #27ae60;
+        }
+        
+        * {
+            
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+            color: var(--dark);
+            padding-top: 80px;
+        }
+        
+        .container {
+            display: flex;
+            
+            margin: 0 auto;
+            
+        }
+        
+        /* Navbar Styles */
+.navbar {
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0%;
+    z-index: 1000;
+    background-color: white; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar-nav .nav-link {
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+    margin-right: 15px;
+}
+
+.navbar .nav-link:hover {
+    color: #d4af37;
+}
+
+.navbar .text-danger {
+    font-weight: bold;
+}
+        
+        .pay{
+        flex: 6;
+        margin-top: 23px;
+        }
+        .payment-section {
+            
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-right: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            
+            
+        }
+        
+        .order-summary {
+            flex: 4;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        .secure-badge svg {
+            margin-right: 8px;
+            fill: var(--accent);
+        }
+        
+        .payment-methods {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .payment-method {
+            padding: 12px 20px;
+            margin-right: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .payment-method.active {
+            color: var(--secondary);
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .payment-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .error-message {
+            color: var(--error);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.visible {
+            display: block;
+        }
+        
+        .card-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .card-col {
+            flex: 1;
+        }
+
+        .button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            background-color: var(--secondary);
+        }
+        
+        .button.secondary {
+            background-color: transparent;
+            color: var(--dark);
+            border: 1px solid #ddd;
+        }
+        
+        .button.secondary:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Order Summary Styles */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+        
+        .step:not(:last-child):after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 60%;
+            width: 80%;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 0;
+        }
+        
+        .step.active .step-number {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .step.completed .step-number {
+            background-color: var(--success);
+            color: white;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            z-index: 1;
+        }
+        
+        .step-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .step.active .step-label {
+            color: var(--secondary);
+        }
+        
+        .car-preview {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+        }
+        
+        .car-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .car-info {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .upi-options,
+        .netbanking-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .upi-option,
+        .bank-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upi-option.active,
+        .bank-option.active {
+            border-color: var(--secondary);
+            background-color: #faf8ef;
+        }
+        
+        .upi-option img,
+        .bank-option img {
+            height: 40px;
+            width: auto;
+            margin-bottom: 8px;
+        }
+        
+        .upi-option p,
+        .bank-option p {
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .upi-form input {
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .payment-content {
+            display: none;
+        }
+        
+        .payment-content.active {
+            display: block;
+        }
+        
+        .success-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .success-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .success-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--success);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-icon svg {
+            fill: white;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .success-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .total-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        
+        
+.advanced-search-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.advanced-search-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.advanced-search-section:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Search Wrapper */
+.search-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Input Fields */
+.search-input-group {
+    position: relative;
+    flex-grow: 1;
+}
+
+.search-input-group input,
+.search-input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #333;
+}
+
+.search-input-group input:focus,
+.search-input-group select:focus {
+    border-color: #d4af37;
+    outline: none;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* Floating Label */
+.search-input-group label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: white;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #d4af37;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Icon inside Input */
+.search-input-group .icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #d4af37;
+}
+
+/* Search Button */
+.search-btn {
+    background: linear-gradient(135deg, #d4af37 0%, #a67c00 100%);
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+.search-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
+    background: linear-gradient(135deg, #a67c00 0%, #d4af37 100%);
+}
+
+/* Swap Icon */
+.swap-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    transform: translateY(-50%);
+    background: #f8f9fa;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.swap-icon:hover {
+    background: #d4af37;
+    color: white;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.5);
+}
+       

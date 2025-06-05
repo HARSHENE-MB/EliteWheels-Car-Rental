@@ -1,0 +1,59 @@
+:root {
+            --primary-color: #d4af37;
+            --dark-color: #222;
+            --light-color: #f8f9fa;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0%;
+            z-index: 1000;
+            background-color: white; 
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .navbar-nav .nav-link {
+            font-size: 18px;
+            font-weight: 500;
+            color: black;
+            margin-right: 15px;
+        }
+        
+        .navbar .nav-link:hover {
+            color: #d4af37;
+        }
+        
+        .navbar .text-danger {
+            font-weight: bold;
+        }
+            
+        body {
+            padding-top: 80px; 
+        }
+            
+        /* Existing Styles */
+        .hero-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-btn:hover {
+            background-color: #c4a030;
+            color: white;
+        }
+        
+        .phone-login-container {
+            max-width: 400px;
+            margin: 80px auto; 
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EliteWheels - Luxury Cars</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+ 	<link rel="stylesheet" th:href="@{/css/luxury.css}">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">
+            <img th:src="@{/assets/upscalemedia-transformed.png}" alt="Logo" height="60" width="110"> 
+        </a>            
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/index}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/explore}">Explore</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/offers}">Offers</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/support}">Support</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-nav" id="profileWrapper">
+		    <div class="nav-item dropdown">
+		        <a href="#" class="nav-link dropdown-toggle" id="profileIcon" data-bs-toggle="dropdown">
+		            <i class="bi bi-person-circle fs-4"></i>
+		            <span id="userNameDisplay" class="ms-2 d-none"></span>
+		        </a>
+		
+		        <div class="dropdown-menu dropdown-menu-end" id="profileDropdownMenu">
+				    <!-- Dynamic content inserted by JS -->
+				</div>
+
+		    </div>
+		</div>
+    </div>
+</nav>
+
+<!-- Header with Animation -->
+<section class="luxury-header">
+    <div class="background-animation" id="particles"></div>
+    <div class="container">
+        <h1>Luxury Cars Collection</h1>
+        <p>Indulge in the ultimate driving experience with our elite fleet of luxury vehicles.</p>
+    </div>
+</section>
+
+
+<div class="container">
+
+<!-- Brand: Rolls-Royce -->
+<section class="brand-section">
+    <h2>Rolls-Royce</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3" th:each="car : ${rrCars}">
+            <div class="car-card">
+                <img th:src="@{'/assets/' + ${car.imageUrl}}" th:alt="${car.model}">
+                <div class="car-card-body">
+                    <h5 th:text="${car.model}">Car Model</h5>
+                    <p th:text="'₹' + ${car.rentalRate} + '/Hour'">₹100/day</p>
+                    <a href="#" class="btn-view" th:attr="data-id=${car.carId}">View Car</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brand: Porsche -->
+<section class="brand-section">
+    <h2>Porsche</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3" th:each="car : ${porscheCars}">
+            <div class="car-card">
+                <img th:src="@{'/assets/' + ${car.imageUrl}}" th:alt="${car.model}">
+                <div class="car-card-body">
+                    <h5 th:text="${car.model}">Car Model</h5>
+                    <p th:text="'₹' + ${car.rentalRate} + '/Hour'">₹1000/day</p>
+                    <a href="#" class="btn-view" th:attr="data-id=${car.carId}">View Car</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brand: Mercedes-Benz -->
+<section class="brand-section">
+    <h2>Mercedes-Benz</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3" th:each="car : ${mercedesCars}">
+            <div class="car-card">
+                <img th:src="@{'/assets/' + ${car.imageUrl}}" th:alt="${car.model}">
+                <div class="car-card-body">
+                    <h5 th:text="${car.model}">Car Model</h5>
+                    <p th:text="'₹' + ${car.rentalRate} + '/Hour'">₹1000/day</p>
+                    <a href="#" class="btn-view" th:attr="data-id=${car.carId}">View Car</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Brand: BMW -->
+<section class="brand-section">
+    <h2>BMW</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3" th:each="car : ${bmwCars}">
+            <div class="car-card">
+                <img th:src="@{'/assets/' + ${car.imageUrl}}" th:alt="${car.model}">
+                <div class="car-card-body">
+                    <h5 th:text="${car.model}">Car Model</h5>
+                    <p th:text="'₹' + ${car.rentalRate} + '/Hour'">₹100/day</p>
+                    <a href="#" class="btn-view" th:attr="data-id=${car.carId}">View Car</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brand: Lamborghini -->
+<section class="brand-section">
+    <h2>Lamborghini</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3" th:each="car : ${lamboCars}">
+            <div class="car-card">
+                <img th:src="@{'/assets/' + ${car.imageUrl}}" th:alt="${car.model}">
+                <div class="car-card-body">
+                    <h5 th:text="${car.model}">Car Model</h5>
+                    <p th:text="'₹' + ${car.rentalRate} + '/Hour'">₹100/day</p>
+                    <a href="#" class="btn-view" th:attr="data-id=${car.carId}">View Car</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="text-center">
+    <a th:href="@{/explore}" class="back-btn">Back to Categories</a>
+</div>
+</div>
+
+
+<!-- Car Details Modal -->
+<div class="modal fade" id="carDetailModal" tabindex="-1" aria-labelledby="carDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="carDetailModalLabel">Car Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="carDetailBody">
+        <!-- Car details will be inserted here -->
+      </div>
+      <div class="modal-footer">
+        <button id="rentNowBtn" class="btn-rent btn-sm w-100">Rent Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/luxury.js"></script>
+
+</body>
+</html>
